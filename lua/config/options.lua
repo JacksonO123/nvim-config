@@ -1,0 +1,22 @@
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
+vim.opt.expandtab = true
+vim.opt.softtabstop = 2
+
+vim.opt.scrolloff = 3
+vim.opt.sidescroll = 3
+
+vim.opt.relativenumber = true
+vim.opt.wrap = false
+
+vim.opt.updatetime = 400
+vim.opt.timeoutlen = 450
+
+vim.opt.smartcase = true
+vim.opt.ignorecase = true
+vim.opt.hlsearch = false
+vim.opt.cursorline = false
+vim.opt.clipboard = "unnamedplus"
+
+vim.opt.autoindent = true
+vim.opt.smartindent = true
