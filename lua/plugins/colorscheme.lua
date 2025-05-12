@@ -9,11 +9,4 @@ return {
     vim.opt.termguicolors = true
     vim.cmd([[colorscheme kanagawa-paper]])
   end,
-  --[[opts = {
-    transparent = true,
-    styles = {
-      sidebars = "transparent",
-      floats = "transparent",
-    },
-  },]]--
 }

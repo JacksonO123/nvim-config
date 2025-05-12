@@ -99,7 +99,7 @@ return {
       },
     })
 
-    local ts_utils = require "nvim-treesitter.ts_utils"
+    local ts_utils = require("nvim-treesitter.ts_utils")
     ts_utils.is_in_node_range = vim.treesitter.is_in_node_range
     ts_utils.get_node_range = vim.treesitter.get_node_range
   end

@@ -6,6 +6,9 @@ return {
     "mason-org/mason-lspconfig.nvim",
   },
   {
+    "mason-org/mason-registry",
+  },
+  {
     "neovim/nvim-lspconfig",
     lazy = false,
     priority = 999,
@@ -23,19 +26,36 @@ return {
       },
     },
     config = function()
+      local lsp_utils = require("utils.lsp")
+
       require("mason").setup()
       require("mason-lspconfig").setup({
         automatic_installation = true,
         automatic_enable = {},
-        ensure_installed = {
-          "lua_ls",
-          "tsserver",
-        },
+        ensure_installed = lsp_utils.clients,
       })
 
-      local lspconfig = require("lspconfig")
+      lsp_utils.setup_lsp()
 
-      lspconfig.lua_ls.setup({})
+      -- lsp borders
+      local border_style = "rounded"
+      vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border_style })
+      vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border_style })
+      vim.diagnostic.config({
+        virtual_text = {
+          current_line = true,
+        },
+        float = {
+          border = border_style,
+        },
+      })
+      vim.o.winborder = "rounded"
+
+      require("lspconfig.ui.windows").default_options = {
+        border = border_style,
+      }
+
+      vim.api.nvim_win_set_option(vim.api.nvim_get_current_win(), "winhighlight", "Normal:Normal,FloatBorder:BorderBG,CursorLine:PmenuSel,Search:None")
     end
   }
 }

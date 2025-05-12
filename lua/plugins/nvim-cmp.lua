@@ -161,13 +161,12 @@ return {
           end,
         },
         window = {
-          completion = {
-            border = "rounded",
-            winhighlight = "Normal:CmpNormal",
-          },
-          documentation = {
-            winhighlight = "Normal:CmpNormal",
-          },
+          completion = cmp.config.window.bordered({
+            winhighlight = "Normal:Normal,FloatBorder:BorderBG,CursorLine:PmenuSel,Search:None",
+          }),
+          documentation = cmp.config.window.bordered({
+            winhighlight = "Normal:Normal,FloatBorder:BorderBG,CursorLine:PmenuSel,Search:None",
+          }),
         },
         mapping = cmp.mapping.preset.insert({
           ["<C-k>"] = cmp_mapping(cmp_mapping.select_prev_item(), { "i", "c" }),
@@ -245,12 +244,10 @@ return {
             emoji = "(Emoji)",
             path = "(Path)",
             calc = "(Calc)",
-            cmp_tabnine = "(Tabnine)",
             vsnip = "(Snippet)",
             luasnip = "(Snippet)",
             buffer = "(Buffer)",
             tmux = "(TMUX)",
-            copilot = "(Copilot)",
             treesitter = "(TreeSitter)",
           },
           duplicates = {

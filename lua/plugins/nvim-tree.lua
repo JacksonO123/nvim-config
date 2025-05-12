@@ -26,6 +26,14 @@ return {
         },
       },
       sync_root_with_cwd = true,
+      renderer = {
+        highlight_git = "name",
+        icons = {
+          show = {
+            git = false,
+          },
+        },
+      },
     })
   end
 }

@@ -7,7 +7,7 @@ vim.opt.scrolloff = 3
 vim.opt.sidescroll = 3
 
 vim.opt.relativenumber = true
-vim.opt.wrap = false
+vim.opt.signcolumn = "yes"
 
 vim.opt.updatetime = 400
 vim.opt.timeoutlen = 450
@@ -20,3 +20,4 @@ vim.opt.clipboard = "unnamedplus"
 
 vim.opt.autoindent = true
 vim.opt.smartindent = true
+vim.opt.wrap = false
