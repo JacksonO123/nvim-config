@@ -5,6 +5,7 @@ M.clients = {
   "clangd",
   "ts_ls",
   "zls",
+  "rust_analyzer",
 }
 
 function M.setup_lsp()
