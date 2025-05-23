@@ -2,10 +2,12 @@ local M = {}
 
 M.clients = {
   "lua_ls",
-  "clangd",
   "ts_ls",
+  "clangd",
   "zls",
   "rust_analyzer",
+  "jsonls",
+  "bashls",
 }
 
 function M.setup_lsp()

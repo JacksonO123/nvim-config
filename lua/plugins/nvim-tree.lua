@@ -16,6 +16,10 @@ return {
     require("nvim-tree").setup({
       on_attach = custom_attach,
       hijack_cursor = true,
+      filters = {
+        dotfiles = false,
+        git_ignored = false,
+      },
       view = {
         preserve_window_proportions = true,
       },
@@ -28,6 +32,7 @@ return {
       sync_root_with_cwd = true,
       renderer = {
         highlight_git = "name",
+        highlight_hidden = "all",
         icons = {
           show = {
             git = false,

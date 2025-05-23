@@ -9,13 +9,15 @@ return {
       "nvim-lua/plenary.nvim",
     },
     config = function()
-      require("telescope").setup({
+      local telescope = require("telescope")
+      telescope.setup({
         defaults = {
           layout_strategy = "vertical",
           layout_config = {
             height = 0.6,
             width = 0.6,
-          }
+          },
+          border = false,
         },
         extensions = {
           fzf = {
@@ -27,7 +29,7 @@ return {
         },
       })
 
-      require("telescope").load_extension("fzf")
+      telescope.load_extension("fzf")
     end
   }
 }

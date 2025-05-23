@@ -7,6 +7,7 @@ vim.opt.scrolloff = 3
 vim.opt.sidescroll = 3
 
 vim.opt.relativenumber = true
+vim.opt.number = true
 vim.opt.signcolumn = "yes"
 
 vim.opt.updatetime = 400
