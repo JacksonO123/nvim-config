@@ -30,7 +30,7 @@ return {
       modules = {},
 
       -- A list of parser names, or "all"
-      ensure_installed = { "comment", "markdown_inline", "regex" },
+      ensure_installed = {},
 
       -- List of parsers to ignore installing (for "all")
       ignore_install = {},

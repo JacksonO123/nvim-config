@@ -1,5 +1,5 @@
 return {
-  "sho-87/kanagawa-paper.nvim",
+  "thesimonho/kanagawa-paper.nvim",
   lazy = false,
   priority = 1000,
   config = function()
@@ -9,9 +9,9 @@ return {
         palette = {
           sumiInk6 = '#828282',
         }
-      }
+      },
     })
     vim.opt.termguicolors = true
-    vim.cmd([[colorscheme kanagawa-paper]])
+    vim.cmd.colorscheme("kanagawa-paper")
   end,
 }
