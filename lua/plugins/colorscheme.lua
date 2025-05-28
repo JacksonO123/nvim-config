@@ -4,10 +4,9 @@ end
 
 local colorschemes = require("utils.colorschemes").colorschemes
 
-local active = "kanagawa"
+local active = "kanagawa-paper"
 
 local res = {}
-
 for i = 1, table.getn(colorschemes) do
   local item = colorschemes[i]
   local priority = 0

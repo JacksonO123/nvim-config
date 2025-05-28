@@ -22,3 +22,10 @@ vim.opt.clipboard = "unnamedplus"
 vim.opt.autoindent = true
 vim.opt.smartindent = true
 vim.opt.wrap = false
+
+vim.api.nvim_create_autocmd("BufEnter", {
+  pattern = "*",
+  command = "highlight link typescriptVariable Keyword"
+})
+
+-- vim.cmd("highlight link typescriptVariable Keyword")
