@@ -1,36 +1,21 @@
 return {
   {
+    "JoosepAlviste/nvim-ts-context-commentstring",
+    lazy = true
+  },
+  {
     "nvim-treesitter/playground",
+    lazy = true,
   },
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     lazy = false,
     config = function()
-      local ts_status_ok, treesitter_configs = pcall(require, "nvim-treesitter.configs")
-      if not ts_status_ok then
-        return
-      end
+      local treesitter_configs = require("nvim-treesitter.configs")
+      local context_commentstring = require("ts_context_commentstring")
 
-      local status_ok, ts_context_commentstring = pcall(require, "ts_context_commentstring")
-      if not status_ok then
-        return
-      end
-
-      ts_context_commentstring.setup({
-        enable = true,
-        enable_autocmd = false,
-        config = {
-          -- Languages that have a single comment style
-          typescript = "// %s",
-          css = "/* %s */",
-          scss = "/* %s */",
-          html = "<!-- %s -->",
-          svelte = "<!-- %s -->",
-          vue = "<!-- %s -->",
-          json = "",
-        },
-      })
+      context_commentstring.setup()
 
       treesitter_configs.setup({
         modules = {},
@@ -52,6 +37,7 @@ return {
           "rust",
           "sql",
           "zig",
+          "lua"
         },
 
         -- List of parsers to ignore installing (for "all")
@@ -86,41 +72,14 @@ return {
         textobjects = {
           swap = {
             enable = false,
-            -- swap_next = textobj_swap_keymaps,
           },
-          -- move = textobj_move_keymaps,
           select = {
             enable = false,
-            -- keymaps = textobj_sel_keymaps,
           },
         },
         textsubjects = {
           enable = false,
-          -- keymaps = { ["."] = "textsubjects-smart", [";"] = "textsubjects-big" },
         },
-        -- playground = {
-        --   enable = false,
-        --   disable = {},
-        --   updatetime = 25,         -- Debounced time for highlighting nodes in the playground from source code
-        --   persist_queries = false, -- Whether the query persists across vim sessions
-        --   keybindings = {
-        --     toggle_query_editor = "o",
-        --     toggle_hl_groups = "i",
-        --     toggle_injected_languages = "t",
-        --     toggle_anonymous_nodes = "a",
-        --     toggle_language_display = "I",
-        --     focus_language = "f",
-        --     unfocus_language = "F",
-        --     update = "R",
-        --     goto_node = "<cr>",
-        --     show_help = "?",
-        --   },
-        -- },
-        -- rainbow = {
-        --   enable = false,
-        --   extended_mode = true,  -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
-        --   max_file_lines = 1000, -- Do not enable for files with more than 1000 lines, int
-        -- },
       })
 
       local ts_utils = require("nvim-treesitter.ts_utils")

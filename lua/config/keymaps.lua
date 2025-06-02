@@ -60,9 +60,9 @@ local keymaps = {
 
     ["<C-v>"] = "p",
 
-    ["<leader>/"] = function()
-      vim.cmd.norm("gcc")
-    end
+    -- ["<leader>/"] = function()
+    --   vim.cmd.norm("gcc")
+    -- end
   },
 
   visual_mode = {
@@ -70,11 +70,11 @@ local keymaps = {
     [">"] = ">gv",
   },
 
-  visual_block_mode = {
-    ["<leader>/"] = function()
-      vim.cmd.norm('gc')
-    end
-  },
+  -- visual_block_mode = {
+  --   ["<leader>/"] = function()
+  --     vim.cmd.norm('gc')
+  --   end
+  -- },
 }
 
 local function load_mode(mode, mappings)
