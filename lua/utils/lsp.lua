@@ -8,6 +8,7 @@ M.clients = {
   "rust_analyzer",
   "jsonls",
   "bashls",
+  "tailwindcss",
 }
 
 function M.setup_lsp()

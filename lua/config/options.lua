@@ -25,7 +25,10 @@ vim.opt.wrap = false
 
 vim.api.nvim_create_autocmd("BufEnter", {
   pattern = "*",
-  command = "highlight link typescriptVariable Keyword"
+  callback = function()
+    vim.cmd("highlight link typescriptVariable Keyword")
+    vim.cmd("highlight link typescriptBraces Normal")
+  end
 })
 
 -- vim.cmd("highlight link typescriptVariable Keyword")
