@@ -1,5 +1,6 @@
 return {
   "stevearc/conform.nvim",
+  lazy = true,
   event = { "BufReadPre", "BufNewFile" },
   config = function()
     local formatter_utils = require("utils.formatter")
