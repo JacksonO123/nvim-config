@@ -1,12 +1,9 @@
 return {
   {
     "davidmh/cspell.nvim",
-    lazy = true
   },
   {
     "nvimtools/none-ls.nvim",
-    lazy = true,
-    event = "VeryLazy",
     config = function()
       local null_ls = require("null-ls");
       local cspell = require("cspell");

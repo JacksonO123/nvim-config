@@ -1,8 +1,5 @@
 return {
-  {
-    "JoosepAlviste/nvim-ts-context-commentstring",
-    lazy = true
-  },
+  { "JoosepAlviste/nvim-ts-context-commentstring", },
   {
     "nvim-treesitter/playground",
     lazy = true,

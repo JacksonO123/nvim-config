@@ -72,7 +72,7 @@ local keymaps = {
 
   -- visual_block_mode = {
   --   ["<leader>/"] = function()
-  --     vim.cmd.norm('gc')
+  --     vim.cmd.norm("gc")
   --   end
   -- },
 }
@@ -91,3 +91,5 @@ local function load_maps()
 end
 
 load_maps()
+
+vim.keymap.set({ "n", "v" }, "L", "<Nop>", opts)
