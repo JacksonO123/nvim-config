@@ -93,3 +93,4 @@ end
 load_maps()
 
 vim.keymap.set({ "n", "v" }, "L", "<Nop>", opts)
+vim.keymap.set({ "n", "v", "i" }, '<F1>', '<Nop>', opts)

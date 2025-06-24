@@ -12,6 +12,7 @@ M.formatter_ft = {
     "json",
     "css",
     "scss",
+    "markdown"
   },
   styleua = { "lua" },
   htmlbeautifier = { "html" },
