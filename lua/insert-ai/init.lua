@@ -93,8 +93,8 @@ local function wrap_text(text, width)
       local parts = vim.split(lines[i], " ")
 
       if #parts == 1 then
-        local first = string.sub(parts[1], 0, width - 2)
-        local second = string.sub(parts[1], width - 1, string.len(parts[1]))
+        local first = parts[1]:sub(0, width - 2)
+        local second = parts[1]:sub(width - 1)
         lines[i] = first
         table.insert(lines, i + 1, second)
         i = i + 1
@@ -112,7 +112,7 @@ local function wrap_text(text, width)
 
     if next_line ~= "" then
       while next_line[1] == " " and next_line[2] == " " do
-        next_line = string.sub(next_line, 1, string.len(next_line))
+        next_line = next_line:sub(1)
       end
       table.insert(lines, i + 1, next_line)
     end
@@ -291,6 +291,24 @@ local function open_prev_output_preview(buf, content, y_pos)
   })
 end
 
+local function clone_buffer_with_marker(buf, marker, row, col)
+  local line = row - 1 -- 0 based
+  local lines = vim.api.nvim_buf_get_lines(buf, 0, -1, false)
+  local scratch_buf = vim.api.nvim_create_buf(false, true)
+  vim.api.nvim_buf_set_lines(scratch_buf, 0, -1, false, lines)
+
+  local target_line = lines[row]
+  local new_line = target_line:sub(1, col) .. marker .. target_line:sub(col + 1)
+  vim.api.nvim_buf_set_lines(scratch_buf, line, line + 1, false, { new_line })
+
+  local final_lines = vim.api.nvim_buf_get_lines(scratch_buf, 0, -1, false)
+  local content = table.concat(final_lines, "\n")
+
+  close_buffer(scratch_buf)
+
+  return content
+end
+
 function M.run_inference()
   local buf = vim.api.nvim_get_current_buf()
   local row, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -304,8 +322,6 @@ function M.run_inference()
   else
     file_ext = name_parts[#name_parts]
   end
-  local file_lines = vim.api.nvim_buf_get_lines(buf, 0, -1, false)
-  local file_data = table.concat(file_lines, "\n")
   local cli_path = "insert-ai"
   local filetype = vim.bo.filetype;
   M.last_filetype = filetype;
@@ -314,19 +330,23 @@ function M.run_inference()
     M.close_windows()
     M.last_prompt = prompt
 
+    local time_string = tostring(os.time())
+    local marker = string.format("<|CURSOR_POSITION_%s|>", time_string)
+    local new_data = clone_buffer_with_marker(buf, marker, row, col)
+
     local final_prompt = string.format([[
-    Use this code as context for the following prompt, and output only the code that is specified to be generated:
-    (.%s file)
-    ```
-    %s
-    ```
-    The current cursor position is at line %d and column %d.
-    Use the context of the cursor position in this program in your output.
-    Generate code based on this prompt:
-    "%s"
-    Generate only the code for this new addition. *important*: Exclude any quotes or language specification surrounding your output.
-    Your output is in text form, not markdown, so avoid using markdown features.
-    ]], file_ext, file_data, row, col, prompt)
+Use this code as context for the following prompt, and output only the code that is specified to be generated at the position of %s:
+(.%s file)
+```
+%s
+```
+The current cursor position is at line %d and column %d.
+Use the context of the cursor position, and cursor position marker within this program in your output.
+Generate code based on this prompt:
+"%s"
+Generate only the code for this new addition. *important*: Exclude any quotes or language specification surrounding your output.
+Your output is in text form, not markdown, so avoid using markdown features.
+]], marker, file_ext, new_data, row, col, prompt)
 
     local prompt_buf = vim.api.nvim_create_buf(false, true)
     local output_buf = vim.api.nvim_create_buf(false, true)
