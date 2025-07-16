@@ -35,8 +35,8 @@ local function open_input_window(callback)
   vim.api.nvim_buf_set_option(buf, 'swapfile', false)
   vim.api.nvim_buf_set_option(buf, 'filetype', 'PromptWindow')
   vim.api.nvim_buf_set_option(buf, 'buflisted', false)
+  vim.api.nvim_buf_set_option(buf, 'wrap', true)
 
-  vim.opt_local.wrap = true
   vim.opt_local.showbreak = '   '
 
   vim.fn.prompt_setprompt(buf, " > ")
@@ -176,8 +176,6 @@ local function open_prompt_preview(buf, prompt)
   vim.api.nvim_buf_set_option(buf, 'swapfile', false)
   vim.api.nvim_buf_set_option(buf, 'buflisted', false)
 
-  vim.opt_local.showbreak = ' '
-
   vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
   vim.api.nvim_buf_set_option(buf, 'modifiable', false)
 
@@ -217,9 +215,9 @@ local function open_output_preview(buf, prompt, y_pos, cli_path)
   vim.api.nvim_buf_set_option(buf, 'bufhidden', 'wipe')
   vim.api.nvim_buf_set_option(buf, 'swapfile', false)
   vim.api.nvim_buf_set_option(buf, 'buflisted', false)
+  vim.api.nvim_buf_set_option(buf, 'wrap', true)
 
-  vim.opt_local.showbreak = ' '
-  vim.api.nvim_buf_set_lines(buf, 0, -1, false, { "Chunking they digits..." })
+  vim.api.nvim_buf_set_lines(buf, 0, -1, false, { "Crunching they digits..." })
   vim.api.nvim_buf_set_option(buf, 'modifiable', false)
 
   vim.keymap.set('n', 'q', function()
@@ -237,11 +235,12 @@ local function open_output_preview(buf, prompt, y_pos, cli_path)
 
   ask_prompt_and_render_output(prompt, cli_path, function(content)
     M.last_output = content
-    local lines = wrap_text(content, M.window_width)
-    if lines[#lines] == "" then
+    local wrapped_lines = wrap_text(content, M.window_width)
+    local lines = vim.split(content, "\n", { plain = true })
+    while lines[#lines] == "" do
       table.remove(lines, #lines)
     end
-    vim.api.nvim_win_set_height(win, #lines)
+    vim.api.nvim_win_set_height(win, #wrapped_lines)
     vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
   end, function()
     vim.api.nvim_buf_set_option(buf, "modifiable", false)
@@ -270,12 +269,14 @@ local function open_prev_output_preview(buf, content, y_pos)
   vim.api.nvim_buf_set_option(buf, 'bufhidden', 'wipe')
   vim.api.nvim_buf_set_option(buf, 'swapfile', false)
   vim.api.nvim_buf_set_option(buf, 'buflisted', false)
+  vim.api.nvim_buf_set_option(buf, 'wrap', true)
 
-  local lines = wrap_text(content, M.window_width)
-  if lines[#lines] == "" then
+  local wrapped_lines = wrap_text(content, M.window_width)
+  local lines = vim.split(content, "\n", { plain = true })
+  while lines[#lines] == "" do
     table.remove(lines, #lines)
   end
-  vim.api.nvim_win_set_height(win, #lines)
+  vim.api.nvim_win_set_height(win, #wrapped_lines)
   vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
   vim.api.nvim_buf_set_option(buf, 'modifiable', false)
 
