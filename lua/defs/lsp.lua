@@ -12,6 +12,7 @@ M.clients = {
   "jsonls",
   "bashls",
   "tailwindcss",
+  "pyright",
 }
 
 return M
