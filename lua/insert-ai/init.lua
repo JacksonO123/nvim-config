@@ -261,10 +261,10 @@ local function open_output_preview(buf, prompt, y_pos, cli_path)
   vim.api.nvim_buf_set_option(buf, "modifiable", true)
   ask_prompt_and_render_output(buf, prompt, cli_path, function(content)
     local lines = wrap_text(content, width)
-    for i, line in ipairs(lines) do
-      lines[i] = " " .. line
+    if lines[#lines] == "" then
+      table.remove(lines, #lines)
     end
-    vim.api.nvim_win_set_height(win, #lines - 1)
+    vim.api.nvim_win_set_height(win, #lines)
     vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
   end, function()
     vim.api.nvim_buf_set_option(buf, "modifiable", false)
