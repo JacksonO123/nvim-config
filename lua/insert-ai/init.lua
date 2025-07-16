@@ -1,5 +1,10 @@
 local M = {}
 
+M.last_prompt = "(no previous prompt)"
+M.last_output = ""
+M.last_filetype = nil
+M.window_width = 60
+
 function M.close_windows() end
 
 local function close_buffer(buf)
@@ -10,15 +15,14 @@ end
 
 local function open_input_window(callback)
   local buf = vim.api.nvim_create_buf(false, true)
-  local width = 60
   local height = 1
   local row = math.floor((vim.o.lines - height) / 4)
-  local col = math.floor((vim.o.columns - width) / 2)
+  local col = math.floor((vim.o.columns - M.window_width) / 2)
 
   local opts = {
     style = "minimal",
     relative = "editor",
-    width = width,
+    width = M.window_width,
     height = height,
     row = row,
     col = col,
@@ -85,7 +89,7 @@ local function wrap_text(text, width)
     local next_line = ""
 
     local count = 0
-    while vim.fn.strdisplaywidth(lines[i]) > width - 1 do
+    while vim.fn.strdisplaywidth(lines[i]) >= width - 1 do
       local parts = vim.split(lines[i], " ")
 
       if #parts == 1 then
@@ -119,27 +123,7 @@ local function wrap_text(text, width)
   return lines
 end
 
-local function outline_text(text, label)
-  local win_width     = vim.api.nvim_win_get_width(0)
-  local content_width = win_width - 2
-
-  local wrapped_lines = wrap_text(text, content_width)
-
-  local showLabel     = " " .. label .. " "
-  local border_top    = "╭─" .. showLabel .. string.rep("─", win_width - 3 - string.len(showLabel)) .. "╮"
-  local border_bottom = "╰" .. string.rep("─", win_width - 2) .. "╯"
-  local lines         = { border_top }
-  for _, line in ipairs(wrapped_lines) do
-    local line_width = vim.fn.strdisplaywidth(line)
-    local padding_spaces = string.rep(" ", win_width - 3 - line_width)
-    table.insert(lines, "│ " .. line .. padding_spaces .. "│")
-  end
-  table.insert(lines, border_bottom)
-
-  return lines
-end
-
-local function ask_prompt_and_render_output(buf, final_prompt, cli_path, update_callback, done_callback)
+local function ask_prompt_and_render_output(final_prompt, cli_path, update_callback, done_callback)
   local content = ""
 
   local job = vim.fn.jobstart({ cli_path }, {
@@ -165,10 +149,9 @@ local function ask_prompt_and_render_output(buf, final_prompt, cli_path, update_
 end
 
 local function open_prompt_preview(buf, prompt)
-  local width = 60
   local row = 0
-  local col = math.floor((vim.o.columns - width))
-  local lines = wrap_text(prompt, width)
+  local col = math.floor((vim.o.columns - M.window_width))
+  local lines = wrap_text(prompt, M.window_width)
   for i, line in ipairs(lines) do
     lines[i] = " " .. line
   end
@@ -177,7 +160,7 @@ local function open_prompt_preview(buf, prompt)
   local opts = {
     style = "minimal",
     relative = "editor",
-    width = width,
+    width = M.window_width,
     height = height,
     row = row,
     col = col,
@@ -213,14 +196,13 @@ local function open_prompt_preview(buf, prompt)
 end
 
 local function open_output_preview(buf, prompt, y_pos, cli_path)
-  local width = 60
-  local col = math.floor((vim.o.columns - width))
+  local col = math.floor((vim.o.columns - M.window_width))
   local height = 1
 
   local opts = {
     style = "minimal",
     relative = "editor",
-    width = width,
+    width = M.window_width,
     height = height,
     row = y_pos,
     col = col,
@@ -237,8 +219,7 @@ local function open_output_preview(buf, prompt, y_pos, cli_path)
   vim.api.nvim_buf_set_option(buf, 'buflisted', false)
 
   vim.opt_local.showbreak = ' '
-
-  vim.api.nvim_buf_set_lines(buf, 0, -1, false, { "Loading..." })
+  vim.api.nvim_buf_set_lines(buf, 0, -1, false, { "Chunking they digits..." })
   vim.api.nvim_buf_set_option(buf, 'modifiable', false)
 
   vim.keymap.set('n', 'q', function()
@@ -253,8 +234,10 @@ local function open_output_preview(buf, prompt, y_pos, cli_path)
   })
 
   vim.api.nvim_buf_set_option(buf, "modifiable", true)
-  ask_prompt_and_render_output(buf, prompt, cli_path, function(content)
-    local lines = wrap_text(content, width)
+
+  ask_prompt_and_render_output(prompt, cli_path, function(content)
+    M.last_output = content
+    local lines = wrap_text(content, M.window_width)
     if lines[#lines] == "" then
       table.remove(lines, #lines)
     end
@@ -263,6 +246,49 @@ local function open_output_preview(buf, prompt, y_pos, cli_path)
   end, function()
     vim.api.nvim_buf_set_option(buf, "modifiable", false)
   end)
+end
+
+local function open_prev_output_preview(buf, content, y_pos)
+  local col = math.floor((vim.o.columns - M.window_width))
+  local height = 1
+
+  local opts = {
+    style = "minimal",
+    relative = "editor",
+    width = M.window_width,
+    height = height,
+    row = y_pos,
+    col = col,
+    border = "rounded",
+    title = "─ Output ",
+    title_pos = "left",
+  }
+
+  vim.api.nvim_set_hl(0, "FloatTitle", { link = "FloatBorder" })
+
+  local win = vim.api.nvim_open_win(buf, true, opts)
+  vim.api.nvim_buf_set_option(buf, 'bufhidden', 'wipe')
+  vim.api.nvim_buf_set_option(buf, 'swapfile', false)
+  vim.api.nvim_buf_set_option(buf, 'buflisted', false)
+
+  local lines = wrap_text(content, M.window_width)
+  if lines[#lines] == "" then
+    table.remove(lines, #lines)
+  end
+  vim.api.nvim_win_set_height(win, #lines)
+  vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
+  vim.api.nvim_buf_set_option(buf, 'modifiable', false)
+
+  vim.keymap.set('n', 'q', function()
+    M.close_windows()
+  end, { buffer = buf, nowait = true, silent = true })
+
+  vim.api.nvim_create_autocmd("BufWipeout", {
+    buffer = buf,
+    callback = function()
+      vim.schedule(M.close_windows)
+    end
+  })
 end
 
 function M.run_inference()
@@ -281,8 +307,13 @@ function M.run_inference()
   local file_lines = vim.api.nvim_buf_get_lines(buf, 0, -1, false)
   local file_data = table.concat(file_lines, "\n")
   local cli_path = "insert-ai"
+  local filetype = vim.bo.filetype;
+  M.last_filetype = filetype;
 
   open_input_window(function(prompt)
+    M.close_windows()
+    M.last_prompt = prompt
+
     local final_prompt = string.format([[
     Use this code as context for the following prompt, and output only the code that is specified to be generated:
     (.%s file)
@@ -299,6 +330,7 @@ function M.run_inference()
 
     local prompt_buf = vim.api.nvim_create_buf(false, true)
     local output_buf = vim.api.nvim_create_buf(false, true)
+    vim.api.nvim_buf_set_option(output_buf, 'filetype', filetype)
 
     function M.close_windows()
       close_buffer(prompt_buf)
@@ -308,6 +340,21 @@ function M.run_inference()
     local height = open_prompt_preview(prompt_buf, prompt)
     open_output_preview(output_buf, final_prompt, height, cli_path)
   end)
+end
+
+function M.show_prev_output()
+  M.close_windows()
+  local prompt_buf = vim.api.nvim_create_buf(false, true)
+  local output_buf = vim.api.nvim_create_buf(false, true)
+  vim.api.nvim_buf_set_option(output_buf, 'filetype', M.last_filetype)
+
+  function M.close_windows()
+    close_buffer(prompt_buf)
+    close_buffer(output_buf)
+  end
+
+  local height = open_prompt_preview(prompt_buf, M.last_prompt)
+  open_prev_output_preview(output_buf, M.last_output, height)
 end
 
 return M
