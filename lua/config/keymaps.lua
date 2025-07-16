@@ -94,3 +94,6 @@ load_maps()
 
 vim.keymap.set({ "n", "v" }, "L", "<Nop>", opts)
 vim.keymap.set({ "n", "v", "i" }, '<F1>', '<Nop>', opts)
+
+-- custom plugins
+vim.keymap.set('n', '<leader>p', ':lua require("insert-ai").run_inference()<CR>', { noremap = true, silent = true })
