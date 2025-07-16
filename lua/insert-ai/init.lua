@@ -51,7 +51,7 @@ local function open_input_window(callback)
       local win_width = vim.api.nvim_win_get_width(win_id)
 
       local required_lines = math.ceil(display_width / win_width)
-      local new_height = math.max(1, math.min(10, required_lines)) -- Clamp between 1 and 10
+      local new_height = math.max(1, math.min(10, required_lines))
 
       vim.api.nvim_win_set_height(win_id, new_height)
     end
@@ -153,19 +153,13 @@ local function ask_prompt_and_render_output(buf, final_prompt, cli_path, update_
       update_callback(content)
     end,
 
-    on_stderr = function(_, err)
-      -- local err_str = vim.inspect(err)
-      -- if err_str ~= "" then
-      --   print("stderr:", err_str)
-      -- end
-    end,
+    on_stderr = function() end,
 
     on_exit = function()
       done_callback()
     end,
   })
 
-  -- Send prompt to stdin
   vim.fn.chansend(job, final_prompt .. "\n")
   vim.fn.chanclose(job, "stdin")
 end
