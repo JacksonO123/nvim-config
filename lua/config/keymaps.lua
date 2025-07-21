@@ -95,4 +95,4 @@ load_maps()
 vim.keymap.set({ "n", "v" }, "L", "<Nop>", opts)
 vim.keymap.set({ "n", "v", "i" }, '<F1>', '<Nop>', opts)
 
-require("insert-ai-nvim").init()
+-- require("insert-ai-nvim").init()
