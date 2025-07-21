@@ -96,5 +96,5 @@ vim.keymap.set({ "n", "v" }, "L", "<Nop>", opts)
 vim.keymap.set({ "n", "v", "i" }, '<F1>', '<Nop>', opts)
 
 -- custom plugins
-vim.keymap.set('n', '<leader>p', ':lua require("insert-ai").run_inference()<CR>', opts)
-vim.keymap.set('n', '<leader>ao', ':lua require("insert-ai").show_prev_output()<CR>', opts)
+vim.keymap.set('n', '<leader>p', ':lua require("insert-ai-nvim").run_inference()<CR>', opts)
+vim.keymap.set('n', '<leader>ao', ':lua require("insert-ai-nvim").show_prev_output()<CR>', opts)
