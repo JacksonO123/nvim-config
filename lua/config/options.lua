@@ -26,3 +26,5 @@ opt.smartindent = true
 opt.wrap = false
 
 opt.swapfile = false
+
+opt.winborder = "none"
