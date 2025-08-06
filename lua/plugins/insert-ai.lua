@@ -6,4 +6,3 @@ return {
     insert_ai.init()
   end
 }
--- return {}
