@@ -17,16 +17,17 @@ return {
       },
     },
     config = function()
-      local lsp_utils = require("utils.lsp")
+      local clients = require("defs.lsp").clients
 
       require("mason").setup()
       require("mason-lspconfig").setup({
         automatic_installation = true,
         automatic_enable = {},
-        ensure_installed = lsp_utils.clients,
+        ensure_installed = clients,
       })
 
-      lsp_utils.setup_lsp()
+      vim.lsp.config("*", {})
+      vim.lsp.enable(clients)
 
       -- lsp borders
       local border_style = "rounded"
