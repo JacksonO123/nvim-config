@@ -11,6 +11,7 @@ opt.sidescroll = 3
 opt.relativenumber = true
 opt.number = true
 opt.signcolumn = "yes"
+opt.colorcolumn = "100"
 
 opt.updatetime = 400
 opt.timeoutlen = 450
