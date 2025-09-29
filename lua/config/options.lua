@@ -1,9 +1,9 @@
 local opt = vim.opt;
 
-opt.shiftwidth = 2
-opt.tabstop = 2
+opt.shiftwidth = 4
+opt.tabstop = 4
 opt.expandtab = true
-opt.softtabstop = 2
+opt.softtabstop = 4
 
 opt.scrolloff = 3
 opt.sidescroll = 3

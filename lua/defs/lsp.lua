@@ -4,15 +4,15 @@ local M = {}
 -- https://github.com/neovim/nvim-lspconfig
 
 M.clients = {
-  "lua_ls",
-  "ts_ls",
-  "clangd",
-  "zls",
-  "rust_analyzer",
-  "jsonls",
-  "bashls",
-  "tailwindcss",
-  "pyright",
+    "lua_ls",
+    "ts_ls",
+    "clangd",
+    "zls",
+    "rust_analyzer",
+    "jsonls",
+    "bashls",
+    "tailwindcss",
+    "pyright",
 }
 
 return M

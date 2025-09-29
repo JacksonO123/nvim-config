@@ -1,20 +1,20 @@
 local M = {}
 
 M.format_ops = {
-  lsp_format = "fallback",
-  timeout_ms = 500,
+    lsp_format = "fallback",
+    timeout_ms = 500,
 }
 
 local formatter_ft_to_conform = function(formatter_ft)
-  local res = {}
+    local res = {}
 
-  for key, value in pairs(formatter_ft) do
-    for i = 1, #value do
-      res[value[i]] = { key }
+    for key, value in pairs(formatter_ft) do
+        for i = 1, #value do
+            res[value[i]] = { key }
+        end
     end
-  end
 
-  return res
+    return res
 end
 
 local formatter_ft = require("defs.formatter").formatter_ft
