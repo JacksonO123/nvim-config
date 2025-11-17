@@ -29,3 +29,4 @@ opt.wrap = false
 opt.swapfile = false
 
 opt.winborder = "none"
+opt.splitright = true;
