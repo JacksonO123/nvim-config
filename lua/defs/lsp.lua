@@ -13,6 +13,7 @@ M.clients = {
     "bashls",
     "tailwindcss",
     "pyright",
+    "cssls",
 }
 
 return M

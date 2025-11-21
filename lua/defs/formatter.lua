@@ -12,10 +12,10 @@ M.formatter_ft = {
         "json",
         "css",
         "scss",
-        "markdown"
+        "markdown",
+        "html"
     },
     styleua = { "lua" },
-    htmlbeautifier = { "html" },
     beautysh = { "bash" },
     rustfmt = { "rust" },
     yamlfix = { "yaml" },
