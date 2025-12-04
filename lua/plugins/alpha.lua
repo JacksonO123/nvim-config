@@ -20,7 +20,7 @@ return {
         dashboard.section.buttons.val = {
             dashboard.button("f", "   Find file", ":Telescope find_files<CR>"),
             dashboard.button("n", "   New file", "<CMD>ene!<CR>"),
-            dashboard.button("t", "󱄽   Search text", ":Telescope live_grep<CR>"),
+            dashboard.button("s", "󱄽   Search text", ":Telescope live_grep<CR>"),
             dashboard.button("r", "   Recent", ":Telescope oldfiles<CR>"),
             dashboard.button("c", "   Config",
                 "<CMD>cd $HOME/.config/nvim/<CR><CMD>edit $HOME/.config/nvim/init.lua<CR>"),
