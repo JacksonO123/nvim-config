@@ -20,7 +20,6 @@ opt.smartcase = true
 opt.ignorecase = true
 opt.hlsearch = false
 opt.cursorline = false
-opt.clipboard = "unnamedplus"
 
 opt.autoindent = true
 opt.smartindent = true

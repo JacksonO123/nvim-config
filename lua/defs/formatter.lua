@@ -15,6 +15,8 @@ M.formatter_ft = {
         "markdown",
         "html"
     },
+    isort = { "python" },
+    black = { "pyhthon" },
     styleua = { "lua" },
     beautysh = { "bash" },
     rustfmt = { "rust" },
