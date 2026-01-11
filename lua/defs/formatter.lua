@@ -16,7 +16,7 @@ M.formatter_ft = {
         "html"
     },
     isort = { "python" },
-    black = { "pyhthon" },
+    black = { "python" },
     styleua = { "lua" },
     beautysh = { "bash" },
     rustfmt = { "rust" },
