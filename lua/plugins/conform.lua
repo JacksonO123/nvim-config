@@ -8,7 +8,13 @@ return {
         local formatter_by_ft = require("utils.formatter").formatter_by_ft
 
         conform.setup({
-            formatters_by_ft = formatter_by_ft
+            formatters_by_ft = formatter_by_ft,
+            format_on_save = function()
+                return {
+                    timeout_ms = 1500,
+                    lsp_fallback = true,
+                }
+            end
         })
 
         local settings = require("config.settings")
