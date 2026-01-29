@@ -1,8 +1,8 @@
 return {
     {
         "neovim/nvim-lspconfig",
-        lazy = false,
-        priority = 999,
+        -- lazy = false,
+        -- priority = 999,
         dependencies = {
             {
                 "folke/lazydev.nvim",
@@ -22,7 +22,6 @@ return {
             require("mason").setup()
             require("mason-lspconfig").setup({
                 automatic_installation = true,
-                automatic_enable = {},
                 ensure_installed = clients,
             })
 

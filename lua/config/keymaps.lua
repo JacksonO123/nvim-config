@@ -98,4 +98,6 @@ vim.keymap.set({ "n", "v", "i" }, '<F1>', '<Nop>', opts)
 vim.keymap.set({ "n", "v" }, "<leader>gd", ":DiffviewOpen<CR>:DiffviewToggleFiles<CR>", opts)
 vim.keymap.set({ "n", "v" }, "<leader>gc", ":DiffviewClose<CR>", opts)
 
+vim.keymap.set("t", "<C-Esc>", [[<C-\><C-n>]], opts)
+
 -- require("insert-ai-nvim").init()
