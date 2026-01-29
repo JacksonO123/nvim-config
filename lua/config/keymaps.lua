@@ -57,6 +57,7 @@ local keymaps = {
 
         ["<leader>f"] = ":Telescope find_files<CR>",
         ["<leader>s"] = ":Telescope live_grep<CR>",
+        ["<leader>tm"] = ":terminal<CR>",
 
         ["<C-v>"] = "p",
 
