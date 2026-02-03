@@ -14,7 +14,8 @@ M.clients = {
     "tailwindcss",
     "pyright",
     "cssls",
-    "jdtls"
+    "jdtls",
+    "eslint"
 }
 
 return M

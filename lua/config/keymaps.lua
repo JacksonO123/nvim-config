@@ -55,27 +55,17 @@ local keymaps = {
             vim.cmd.norm("grr")
         end,
 
-        ["<leader>f"] = ":Telescope find_files<CR>",
-        ["<leader>s"] = ":Telescope live_grep<CR>",
+        ["<leader>f"] = require('telescope.builtin').find_files,
+        ["<leader>s"] = require("telescope.builtin").live_grep,
         ["<leader>tm"] = ":terminal<CR>",
 
         ["<C-v>"] = "p",
-
-        -- ["<leader>/"] = function()
-        --   vim.cmd.norm("gcc")
-        -- end
     },
 
     visual_mode = {
         ["<"] = "<gv",
         [">"] = ">gv",
     },
-
-    -- visual_block_mode = {
-    --   ["<leader>/"] = function()
-    --     vim.cmd.norm("gc")
-    --   end
-    -- },
 }
 
 local function load_mode(mode, mappings)
