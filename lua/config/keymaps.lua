@@ -86,9 +86,7 @@ load_maps()
 vim.keymap.set({ "n", "v" }, "L", "<Nop>", opts)
 vim.keymap.set({ "n", "v", "i" }, '<F1>', '<Nop>', opts)
 
-vim.keymap.set({ "n", "v" }, "<leader>gd", ":DiffviewOpen<CR>:DiffviewToggleFiles<CR>", opts)
-vim.keymap.set({ "n", "v" }, "<leader>gc", ":DiffviewClose<CR>", opts)
+vim.keymap.set({ "n", "v" }, "<leader>gd", ":Gvdiffsplit<CR>", opts)
+vim.keymap.set({ "n", "v" }, "<leader>gb", ":Gitsigns blame<CR>", opts)
 
 vim.keymap.set("t", "<C-Esc>", [[<C-\><C-n>]], opts)
-
--- require("insert-ai-nvim").init()
