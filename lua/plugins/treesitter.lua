@@ -18,7 +18,7 @@ return {
                 install_dir = vim.fn.stdpath("data") .. "/site",
             })
 
-            ts.install({
+            ts.install {
                 "javascript",
                 "typescript",
                 "tsx",
@@ -35,7 +35,7 @@ return {
                 "sql",
                 "zig",
                 "lua"
-            }, false)
+            }
 
             local context_commentstring = require("ts_context_commentstring")
             context_commentstring.setup()
