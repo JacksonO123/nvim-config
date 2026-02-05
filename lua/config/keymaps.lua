@@ -36,6 +36,7 @@ local keymaps = {
 
         ["<leader>lj"] = vim.diagnostic.goto_next,
         ["<leader>lk"] = vim.diagnostic.goto_prev,
+        ["<leader>ld"] = vim.diagnostic.open_float,
         ["<leader>lf"] = function()
             conform.format(formatter_utils.format_ops)
         end,

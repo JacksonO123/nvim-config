@@ -26,6 +26,8 @@ return {
             })
 
             vim.lsp.config("*", {})
+            vim.lsp.config("null-ls", {})
+
             vim.lsp.enable(clients)
 
             -- lsp borders
