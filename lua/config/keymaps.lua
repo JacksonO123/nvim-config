@@ -101,6 +101,6 @@ vim.keymap.set({ "n", "v", "i" }, "<F1>", "<Nop>", opts)
 
 vim.keymap.set({ "n", "v" }, "<leader>gd", ":Gvdiffsplit<CR>", opts)
 vim.keymap.set({ "n", "v" }, "<leader>gb", ":Gitsigns blame<CR>", opts)
-vim.keymap.set({ "n", "v" }, "<leader>gs", ":vert G<CR>", opts)
+vim.keymap.set({ "n", "v" }, "<leader>gs", ":topleft vert G<CR>", opts)
 
 vim.keymap.set("t", "<C-Esc>", [[<C-\><C-n>]], opts)
