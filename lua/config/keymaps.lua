@@ -50,8 +50,8 @@ local keymaps = {
 
         ["<C-Up>"] = ":resize -2<CR>",
         ["<C-Down>"] = ":resize +2<CR>",
-        ["<C-[>"] = ":vertical resize -2<CR>",
-        ["<C-]>"] = ":vertical resize +2<CR>",
+        ["<C-->"] = ":vertical resize -2<CR>",
+        ["<C-=>"] = ":vertical resize +2<CR>",
 
         ["gd"] = "<C-]>",
         ["<leader>lr"] = function()
@@ -101,5 +101,6 @@ vim.keymap.set({ "n", "v", "i" }, "<F1>", "<Nop>", opts)
 
 vim.keymap.set({ "n", "v" }, "<leader>gd", ":Gvdiffsplit<CR>", opts)
 vim.keymap.set({ "n", "v" }, "<leader>gb", ":Gitsigns blame<CR>", opts)
+vim.keymap.set({ "n", "v" }, "<leader>gs", ":vert G<CR>", opts)
 
 vim.keymap.set("t", "<C-Esc>", [[<C-\><C-n>]], opts)
