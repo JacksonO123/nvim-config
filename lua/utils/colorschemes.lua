@@ -9,7 +9,7 @@ M.colorschemes = {
                 transparent = true,
                 colors = {
                     palette = {
-                        sumiInk6 = '#828282',
+                        sumiInk6 = "#828282",
                     },
                 },
             })
@@ -76,7 +76,7 @@ M.colorschemes = {
         "rebelot/kanagawa.nvim",
         name = "kanagawa",
         config = function()
-            require('kanagawa').setup({
+            require("kanagawa").setup({
                 transparent = true,
                 colors = {
                     theme = {
@@ -114,7 +114,7 @@ M.colorschemes = {
         "killitar/obscure.nvim",
         name = "obscure",
         config = function()
-            require('obscure').setup({
+            require("obscure").setup({
                 transparent = true,
             })
         end

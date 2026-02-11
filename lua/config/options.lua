@@ -1,9 +1,10 @@
+local settings = require("config.settings")
 local opt = vim.opt;
 
-opt.shiftwidth = 4
-opt.tabstop = 4
+opt.shiftwidth = settings.tab_width
+opt.tabstop = settings.tab_width
 opt.expandtab = true
-opt.softtabstop = 4
+opt.softtabstop = settings.tab_width
 
 opt.scrolloff = 3
 opt.sidescroll = 3

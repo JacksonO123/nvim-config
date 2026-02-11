@@ -18,6 +18,8 @@ local mode_adapters = {
 
 local formatter_utils = require("utils.formatter")
 local conform = require("conform");
+local harpoon = require("harpoon");
+local telescope_builtin = require("telescope.builtin")
 
 local keymaps = {
     insert_mode = {
@@ -48,19 +50,29 @@ local keymaps = {
 
         ["<C-Up>"] = ":resize -2<CR>",
         ["<C-Down>"] = ":resize +2<CR>",
-        ["<C-Left>"] = ":vertical resize -2<CR>",
-        ["<C-Right>"] = ":vertical resize +2<CR>",
+        ["<C-[>"] = ":vertical resize -2<CR>",
+        ["<C-]>"] = ":vertical resize +2<CR>",
 
         ["gd"] = "<C-]>",
         ["<leader>lr"] = function()
             vim.cmd.norm("grr")
         end,
 
-        ["<leader>f"] = require('telescope.builtin').find_files,
-        ["<leader>s"] = require("telescope.builtin").live_grep,
+        ["<leader>f"] = telescope_builtin.find_files,
+        ["<leader>s"] = telescope_builtin.live_grep,
         ["<leader>tm"] = ":terminal<CR>",
 
         ["<C-v>"] = "p",
+
+        ["<leader>a"] = function() harpoon:list():add() end,
+        ["<leader>m"] = function() harpoon.ui:toggle_quick_menu(harpoon:list()) end,
+        ["<C-b>"] = function() harpoon:list():select(1) end,
+        ["<C-n>"] = function() harpoon:list():select(2) end,
+        ["<C-m>"] = function() harpoon:list():select(3) end,
+        ["<C-,>"] = function() harpoon:list():select(4) end,
+        ["<C-.>"] = function() harpoon:list():select(5) end,
+        ["<C-u>"] = function() harpoon:list():prev() end,
+        ["<C-i>"] = function() harpoon:list():next() end,
     },
 
     visual_mode = {
@@ -85,7 +97,7 @@ end
 load_maps()
 
 vim.keymap.set({ "n", "v" }, "L", "<Nop>", opts)
-vim.keymap.set({ "n", "v", "i" }, '<F1>', '<Nop>', opts)
+vim.keymap.set({ "n", "v", "i" }, "<F1>", "<Nop>", opts)
 
 vim.keymap.set({ "n", "v" }, "<leader>gd", ":Gvdiffsplit<CR>", opts)
 vim.keymap.set({ "n", "v" }, "<leader>gb", ":Gitsigns blame<CR>", opts)

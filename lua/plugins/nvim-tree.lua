@@ -1,10 +1,10 @@
 return {
     {
-        'nvim-tree/nvim-web-devicons',
+        "nvim-tree/nvim-web-devicons",
         lazy = true,
     },
     {
-        'nvim-tree/nvim-tree.lua',
+        "nvim-tree/nvim-tree.lua",
         config = function()
             local api = require("nvim-tree.api")
 
@@ -43,6 +43,16 @@ return {
                         },
                     },
                 },
+                filesystem_watchers = {
+                    ignore_dirs = {
+                        "node_modules",
+                        ".git",
+                        "build",
+                        "target",
+                        "zig-out",
+                        ".next",
+                    },
+                }
             })
         end
     }

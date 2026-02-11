@@ -1,9 +1,9 @@
 return {
-    'numToStr/Comment.nvim',
+    "numToStr/Comment.nvim",
     config = function()
         local context_commentstring = require("ts_context_commentstring.integrations.comment_nvim")
 
-        require('Comment').setup({
+        require("Comment").setup({
             padding = true,
             sticky = true,
             ignore = "^$",

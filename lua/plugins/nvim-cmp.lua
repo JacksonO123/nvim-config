@@ -116,22 +116,22 @@ end
 
 return {
     {
-        'hrsh7th/cmp-nvim-lsp',
+        "hrsh7th/cmp-nvim-lsp",
     },
     {
-        'hrsh7th/cmp-buffer',
+        "hrsh7th/cmp-buffer",
     },
     {
-        'hrsh7th/cmp-path',
+        "hrsh7th/cmp-path",
     },
     {
-        'hrsh7th/cmp-cmdline',
+        "hrsh7th/cmp-cmdline",
     },
     {
         "saadparwaiz1/cmp_luasnip",
     },
     {
-        'hrsh7th/nvim-cmp',
+        "hrsh7th/nvim-cmp",
         config = function()
             local cmp = require("cmp")
             local status_cmp_ok, cmp_types = pcall(require, "cmp.types.cmp")
@@ -139,7 +139,7 @@ return {
                 return
             end
 
-            local luasnip = require('luasnip');
+            local luasnip = require("luasnip");
             local cmp_mapping = require("cmp.config.mapping");
             local ConfirmBehavior = cmp_types.ConfirmBehavior;
             local SelectBehavior = cmp_types.SelectBehavior;
@@ -228,11 +228,11 @@ return {
                 }),
                 sources = cmp.config.sources(
                     {
-                        { name = 'nvim_lsp' },
-                        { name = 'luasnip' }, -- For luasnip users.
+                        { name = "nvim_lsp" },
+                        { name = "luasnip" }, -- For luasnip users.
                     },
                     {
-                        { name = 'buffer' },
+                        { name = "buffer" },
                     }
                 ),
                 formatting = {
