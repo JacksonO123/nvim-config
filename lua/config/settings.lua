@@ -9,7 +9,7 @@ M.map_local_leader = "\\"
 -- M.format_on_save = true
 M.format_on_save = false
 
-M.tab_width = 2;
+M.tab_width = 2
 
 M.transparent = true
 M.colorscheme = "kanagawa-paper"
