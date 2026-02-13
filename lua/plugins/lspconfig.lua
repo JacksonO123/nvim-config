@@ -1,8 +1,6 @@
 return {
     {
         "neovim/nvim-lspconfig",
-        -- lazy = false,
-        -- priority = 999,
         dependencies = {
             {
                 "folke/lazydev.nvim",

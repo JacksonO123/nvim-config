@@ -13,7 +13,12 @@ return {
                     cspell.diagnostics.with({
                         diagnostics_postprocess = function(diagnostic)
                             diagnostic.severity = vim.diagnostic.severity.WARN
-                        end
+                        end,
+                        config = {
+                            find_json = function(_)
+                                return os.getenv("HOME") .. "/cspell.json"
+                            end
+                        }
                     }),
                     cspell.code_actions
                 }
