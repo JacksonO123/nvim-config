@@ -17,8 +17,8 @@ local mode_adapters = {
 }
 
 local formatter_utils = require("utils.formatter")
-local conform = require("conform");
-local harpoon = require("harpoon");
+local conform = require("conform")
+local harpoon = require("harpoon")
 local telescope_builtin = require("telescope.builtin")
 
 local keymaps = {
@@ -64,15 +64,27 @@ local keymaps = {
 
         ["<C-v>"] = "p",
 
-        ["<leader>a"] = function() harpoon:list():add() end,
-        ["<leader>m"] = function() harpoon.ui:toggle_quick_menu(harpoon:list()) end,
-        ["<C-b>"] = function() harpoon:list():select(1) end,
-        ["<C-n>"] = function() harpoon:list():select(2) end,
-        ["<C-m>"] = function() harpoon:list():select(3) end,
-        ["<C-,>"] = function() harpoon:list():select(4) end,
-        ["<C-.>"] = function() harpoon:list():select(5) end,
-        ["<C-u>"] = function() harpoon:list():prev() end,
-        ["<C-i>"] = function() harpoon:list():next() end,
+        ["<leader>a"] = function()
+            harpoon:list():add()
+        end,
+        ["<leader>m"] = function()
+            harpoon.ui:toggle_quick_menu(harpoon:list())
+        end,
+        ["<C-1>"] = function()
+            harpoon:list():select(1)
+        end,
+        ["<C-2>"] = function()
+            harpoon:list():select(2)
+        end,
+        ["<C-3>"] = function()
+            harpoon:list():select(3)
+        end,
+        ["<C-4>"] = function()
+            harpoon:list():select(4)
+        end,
+        ["<C-5>"] = function()
+            harpoon:list():select(5)
+        end,
     },
 
     visual_mode = {
