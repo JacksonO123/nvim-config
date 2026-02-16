@@ -1,5 +1,5 @@
 local settings = require("config.settings")
-local opt = vim.opt;
+local opt = vim.opt
 
 opt.shiftwidth = settings.tab_width
 opt.tabstop = settings.tab_width
@@ -28,5 +28,7 @@ opt.wrap = false
 
 opt.swapfile = false
 
-opt.winborder = "none"
-opt.splitright = true;
+opt.winborder = "rounded"
+opt.splitright = true
+
+vim.o.winborder = "rounded"

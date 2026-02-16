@@ -30,26 +30,21 @@ return {
 
             -- lsp borders
             local border_style = "rounded"
-            vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-                vim.lsp.handlers.hover,
-                { border = border_style }
-            )
-            vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
-                vim.lsp.handlers.signature_help,
-                { border = border_style }
-            )
+            vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border_style })
+            vim.lsp.handlers["textDocument/signatureHelp"] =
+                vim.lsp.with(vim.lsp.handlers.signature_help, { border = border_style })
             vim.diagnostic.config({
                 virtual_text = true,
-                float = { border = border_style, },
+                float = { border = border_style },
             })
-            vim.o.winborder = "rounded"
 
             require("lspconfig.ui.windows").default_options = {
-                border = border_style
+                border = border_style,
             }
 
             vim.api.nvim_win_set_option(
-                vim.api.nvim_get_current_win(), "winhighlight",
+                vim.api.nvim_get_current_win(),
+                "winhighlight",
                 "Normal:Normal,FloatBorder:BorderBG,CursorLine:PmenuSel,Search:None"
             )
 
@@ -59,6 +54,6 @@ return {
                 opts.border = "rounded"
                 return orig_util_open_floating_preview(contents, syntax, opts, ...)
             end
-        end
-    }
+        end,
+    },
 }
