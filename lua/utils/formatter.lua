@@ -17,7 +17,7 @@ local formatter_ft_to_conform = function(formatter_ft)
     return res
 end
 
-local formatter_ft = require("defs.formatter").formatter_ft
+local formatter_ft = require("lua.config.settings").formatter_ft
 M.formatter_by_ft = formatter_ft_to_conform(formatter_ft)
 
 return M

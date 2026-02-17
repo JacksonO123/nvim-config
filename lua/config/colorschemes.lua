@@ -1,12 +1,14 @@
 local M = {}
 
+local settings = require("lua.config.settings")
+
 M.colorschemes = {
     {
         "thesimonho/kanagawa-paper.nvim",
         name = "kanagawa-paper",
         config = function()
             require("kanagawa-paper").setup({
-                transparent = true,
+                transparent = settings.transparent,
                 colors = {
                     palette = {
                         sumiInk6 = "#828282",
@@ -30,20 +32,7 @@ M.colorschemes = {
                         CmpItemAbbrMatchFuzzy = { fg = theme.diag.hint, bold = true },
                         CmpItemMenu = { fg = theme.ui.fg_dim, italic = true },
                     }
-                end,
-            })
-        end,
-    },
-
-    {
-        -- https://github.com/marko-cerovac/material.nvim
-        "marko-cerovac/material.nvim",
-        name = "material",
-        config = function()
-            require("material").setup({
-                disable = {
-                    background = true,
-                },
+                end
             })
         end,
     },
@@ -53,7 +42,9 @@ M.colorschemes = {
         "sainnhe/sonokai",
         name = "sonokai",
         config = function()
-            vim.g.sonokai_transparent_background = 2
+            if settings.transparent then
+                vim.g.sonokai_transparent_background = 2
+            end
         end,
     },
 
@@ -62,7 +53,7 @@ M.colorschemes = {
         "shaunsingh/nord.nvim",
         name = "nord",
         config = function()
-            vim.g.nord_disable_background = true
+            vim.g.nord_disable_background = settings.transparent
         end,
     },
 
@@ -72,7 +63,7 @@ M.colorschemes = {
         name = "catppuccin",
         config = function()
             require("catppuccin").setup({
-                transparent_background = true,
+                transparent_background = settings.transparent,
             })
         end,
     },
@@ -84,7 +75,7 @@ M.colorschemes = {
         config = function()
             require("onenord").setup({
                 disable = {
-                    background = true,
+                    background = settings.transparent,
                 },
             })
         end,
@@ -96,7 +87,7 @@ M.colorschemes = {
         name = "kanagawa",
         config = function()
             require("kanagawa").setup({
-                transparent = true,
+                transparent = settings.transparent,
                 colors = {
                     theme = {
                         all = {
@@ -134,7 +125,7 @@ M.colorschemes = {
         name = "obscure",
         config = function()
             require("obscure").setup({
-                transparent = true,
+                transparent = settings.transparent,
             })
         end,
     },

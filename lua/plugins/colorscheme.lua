@@ -2,8 +2,9 @@ local setColorScheme = function(name)
     vim.cmd.colorscheme(name)
 end
 
-local colorschemes = require("utils.colorschemes").colorschemes
-local active = "kanagawa-paper"
+local colorschemes = require("lua.config.colorschemes").colorschemes
+local settings = require("config.settings")
+local active = settings.colorscheme
 local res = {}
 
 for i = 1, table.getn(colorschemes) do
