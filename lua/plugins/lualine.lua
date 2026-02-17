@@ -1,7 +1,7 @@
 return {
     "nvim-lualine/lualine.nvim",
     config = function()
-        local custom_theme = require('lualine.themes.auto') -- or any other theme like 'vscode', 'gruvbox', etc.
+        local custom_theme = require('lualine.themes.auto')
         custom_theme.normal.c.bg = 'None'
         custom_theme.inactive.c.bg = 'None'
 
