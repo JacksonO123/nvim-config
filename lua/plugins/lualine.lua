@@ -4,15 +4,33 @@ return {
         vim.cmd("hi StatusLine guibg=NONE")
         vim.cmd("hi StatusLineNC guibg=NONE")
 
-        local custom_theme = require('lualine.themes.auto')
+        local custom_theme = require("lualine.themes.iceberg_dark")
 
-        custom_theme.normal.c.bg = "NONE"
-        custom_theme.insert.c.bg = "NONE"
-        custom_theme.replace.c.bg = "NONE"
-        custom_theme.visual.c.bg = "NONE"
-        custom_theme.command.c.bg = "NONE"
-        custom_theme.inactive.c.bg = "NONE"
-        custom_theme.terminal.c.bg = "NONE"
+        custom_theme.visual = {
+            a = custom_theme.visual.a,
+            b = custom_theme.visual.b,
+            c = "NONE",
+        }
+        custom_theme.replace = {
+            a = custom_theme.replace.a,
+            b = custom_theme.replace.b,
+            c = "NONE",
+        }
+        custom_theme.inactive = {
+            a = custom_theme.inactive.a,
+            b = custom_theme.inactive.b,
+            c = "NONE",
+        }
+        custom_theme.normal = {
+            a = custom_theme.normal.a,
+            b = custom_theme.normal.b,
+            c = "NONE",
+        }
+        custom_theme.insert = {
+            a = custom_theme.insert.a,
+            b = custom_theme.insert.b,
+            c = "NONE",
+        }
 
         require('lualine').setup({
             options = {
