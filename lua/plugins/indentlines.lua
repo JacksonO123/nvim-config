@@ -1,7 +1,7 @@
 return {
     "lukas-reineke/indent-blankline.nvim",
     config = function()
-        local icons = require("config.icons")
+        local icons = require("config.settings").icons
 
         require("ibl").setup({
             enabled = true,

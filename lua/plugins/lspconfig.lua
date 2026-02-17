@@ -15,7 +15,7 @@ return {
             },
         },
         config = function()
-            local clients = require("defs.lsp").clients
+            local clients = require("config.settings").clients
 
             require("mason").setup()
             require("mason-lspconfig").setup({
