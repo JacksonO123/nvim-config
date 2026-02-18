@@ -6,8 +6,8 @@ M.icons = icons
 M.map_leader = " "
 M.map_local_leader = "\\"
 
--- M.format_on_save = true
-M.format_on_save = false
+M.format_on_save = true
+-- M.format_on_save = false
 
 M.tab_width = 2
 
@@ -49,7 +49,7 @@ M.lsp_clients = {
     "pyright",
     "cssls",
     "jdtls",
-    "eslint"
+    "eslint",
 }
 
 return M
