@@ -23,7 +23,7 @@ return {
             dashboard.button(
                 "c",
                 "   Config",
-                "<CMD>cd $HOME/.config/nvim/<CR><CMD>edit $HOME/.config/nvim/init.lua<CR>"
+                "<CMD>cd $HOME/.config/nvim/<CR><CMD>edit $HOME/.config/nvim/lua/config/settings.lua<CR>"
             ),
             dashboard.button("q", "   Quit NVIM", ":qa<CR>"),
         }
