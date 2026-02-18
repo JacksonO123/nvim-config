@@ -1,6 +1,6 @@
 local M = {}
 
-local icons = require("lua.defs.icons")
+local icons = require("defs.icons")
 M.icons = icons
 
 M.map_leader = " "
