@@ -15,27 +15,30 @@ M.transparent = true
 M.colorscheme = "kanagawa-paper"
 
 M.formatter_ft = {
-    prettierd = {
-        "javascript",
-        "typescript",
-        "javascriptreact",
-        "typescriptreact",
-        "json",
-        "css",
-        "scss",
-        "markdown",
-        "html"
-    },
-    isort = { "python" },
-    black = { "python" },
-    styleua = { "lua" },
-    beautysh = { "bash" },
-    rustfmt = { "rust" },
-    yamlfix = { "yaml" },
-    taplo = { "toml" },
+    javascript = { "prettierd" },
+    typescript = { "prettierd" },
+    javascriptreact = { "prettierd" },
+    typescriptreact = { "prettierd" },
+    json = { "prettierd" },
+    css = { "prettierd" },
+    scss = { "prettierd" },
+    markdown = { "prettierd" },
+    html = { "prettierd" },
+
+    python = { "isort", "black" },
+    lua = { "styleua" },
+    bash = { "beautysh" },
+    rust = { "rustfmt" },
+    yaml = { "yamlfix" },
+    toml = { "taplo" },
 }
 
-M.clients = {
+M.format_ops = {
+    lsp_format = "fallback",
+    timeout_ms = 500,
+}
+
+M.lsp_clients = {
     "lua_ls",
     "ts_ls",
     "clangd",

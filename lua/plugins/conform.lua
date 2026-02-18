@@ -6,12 +6,10 @@ return {
         local settings = require("config.settings")
 
         if settings.format_on_save then
-            local formatter_utils = require("utils.formatter")
             local conform = require("conform")
-            local formatter_by_ft = require("utils.formatter").formatter_by_ft
 
             conform.setup({
-                formatters_by_ft = formatter_by_ft,
+                formatters_by_ft = settings.formatter_ft,
                 format_on_save = function()
                     return {
                         timeout_ms = 1500,
@@ -25,7 +23,7 @@ return {
             vim.api.nvim_create_autocmd({ "BufWritePre" }, {
                 group = format_augroup,
                 callback = function()
-                    conform.format(formatter_utils.format_ops)
+                    conform.format(settings.format_ops)
                 end
             })
         end
