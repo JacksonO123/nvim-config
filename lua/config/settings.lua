@@ -15,18 +15,17 @@ M.transparent = true
 M.colorscheme = "kanagawa-paper"
 
 M.formatter_ft = {
-    javascript = { "prettierd" },
-    typescript = { "prettierd" },
-    javascriptreact = { "prettierd" },
-    typescriptreact = { "prettierd" },
-    json = { "prettierd" },
-    css = { "prettierd" },
-    scss = { "prettierd" },
-    markdown = { "prettierd" },
-    html = { "prettierd" },
+    javascript = { "prettier" },
+    typescript = { "prettier" },
+    javascriptreact = { "prettier" },
+    typescriptreact = { "prettier" },
+    json = { "prettier" },
+    css = { "prettier" },
+    scss = { "prettier" },
+    markdown = { "prettier" },
+    html = { "prettier" },
 
     python = { "isort", "black" },
-    lua = { "styleua" },
     bash = { "beautysh" },
     rust = { "rustfmt" },
     yaml = { "yamlfix" },

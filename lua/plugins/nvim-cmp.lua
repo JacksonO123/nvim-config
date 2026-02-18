@@ -16,7 +16,7 @@ return {
             local borderOps = {
                 border = "rounded",
                 winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
-            };
+            }
 
             cmp.setup({
                 snippet = {
