@@ -1,19 +1,22 @@
 return {
-    { "hrsh7th/cmp-nvim-lsp" },
-    { "hrsh7th/cmp-buffer" },
-    { "hrsh7th/cmp-path" },
-    { "hrsh7th/cmp-cmdline" },
-    { "saadparwaiz1/cmp_luasnip" },
     {
         "hrsh7th/nvim-cmp",
+        dependencies = {
+            "hrsh7th/cmp-nvim-lsp",
+            "hrsh7th/cmp-buffer",
+            "hrsh7th/cmp-path",
+            "saadparwaiz1/cmp_luasnip",
+            "hrsh7th/cmp-cmdline",
+        },
         config = function()
             local cmp = require("cmp")
             local luasnip = require("luasnip")
+            local icons = require("defs.icons")
 
-            local icons_ok, icons = pcall(require, "config.icons")
-            if not icons_ok then
-                return
-            end
+            local borderOps = {
+                border = "rounded",
+                winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
+            };
 
             cmp.setup({
                 snippet = {
@@ -22,14 +25,8 @@ return {
                     end,
                 },
                 window = {
-                    completion = cmp.config.window.bordered({
-                        border = "rounded",
-                        winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
-                    }),
-                    documentation = cmp.config.window.bordered({
-                        border = "rounded",
-                        winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
-                    }),
+                    completion = cmp.config.window.bordered(borderOps),
+                    documentation = cmp.config.window.bordered(borderOps),
                 },
                 mapping = cmp.mapping.preset.insert({
                     ["<C-k>"] = cmp.mapping.select_prev_item(),
@@ -78,6 +75,22 @@ return {
                         return vim_item
                     end,
                 },
+            })
+
+            cmp.setup.cmdline({ '/', '?' }, {
+                mapping = cmp.mapping.preset.cmdline(),
+                sources = {
+                    { name = 'buffer' }
+                }
+            })
+
+            cmp.setup.cmdline(':', {
+                mapping = cmp.mapping.preset.cmdline(),
+                sources = cmp.config.sources({
+                    { name = 'path' }
+                }, {
+                    { name = 'cmdline' }
+                })
             })
         end,
     },
