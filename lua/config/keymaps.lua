@@ -16,7 +16,7 @@ local mode_adapters = {
     operator_pending_mode = "o",
 }
 
-local formatter_utils = require("utils.formatter")
+local settings = require("config.settings")
 local conform = require("conform")
 local harpoon = require("harpoon")
 local telescope_builtin = require("telescope.builtin")
@@ -40,7 +40,7 @@ local keymaps = {
         ["<leader>lk"] = vim.diagnostic.goto_prev,
         ["<leader>ld"] = vim.diagnostic.open_float,
         ["<leader>lf"] = function()
-            conform.format(formatter_utils.format_ops)
+            conform.format(settings.formatter_ft)
         end,
 
         ["<C-h>"] = "<C-w>h",
