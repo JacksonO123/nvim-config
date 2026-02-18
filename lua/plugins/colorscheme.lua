@@ -2,7 +2,7 @@ local setColorScheme = function(name)
     vim.cmd.colorscheme(name)
 end
 
-local colorschemes = require("lua.config.colorschemes").colorschemes
+local colorschemes = require("config.colorschemes").colorschemes
 local settings = require("config.settings")
 local active = settings.colorscheme
 local res = {}

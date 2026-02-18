@@ -1,6 +1,6 @@
 local M = {}
 
-local settings = require("lua.config.settings")
+local settings = require("config.settings")
 
 M.colorschemes = {
     {
