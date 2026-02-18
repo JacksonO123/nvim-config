@@ -30,6 +30,13 @@ return {
             vim.lsp.config("*", {})
             vim.lsp.config("null-ls", {})
 
+            for _, client in ipairs(clients) do
+                local ok, config = pcall(require, "lsp." .. client)
+                if ok then
+                    vim.lsp.config(client, config)
+                end
+            end
+
             vim.lsp.enable(clients)
         end,
     },
