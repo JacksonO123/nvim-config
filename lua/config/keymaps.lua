@@ -30,6 +30,7 @@ local keymaps = {
         ["<leader>e"] = ":NvimTreeToggle<CR>",
         ["<leader>q"] = "<C-w>q",
         ["<leader>w"] = ":w<CR>",
+        ["<leader>bw"] = ":noautocmd w<CR>",
         ["<leader>r"] = function()
             vim.cmd.norm("grn")
         end,
@@ -116,3 +117,5 @@ vim.keymap.set({ "n", "v" }, "<leader>gb", ":Gitsigns blame<CR>", opts)
 vim.keymap.set({ "n", "v" }, "<leader>gs", ":NvimTreeClose<CR>:topleft vert G<CR>", opts)
 
 vim.keymap.set("t", "<C-Esc>", [[<C-\><C-n>]], opts)
+
+vim.keymap.set("v", "<leader>y", "\"+y", opts)
