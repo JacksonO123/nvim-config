@@ -26,6 +26,7 @@ return {
                 },
                 view = {
                     preserve_window_proportions = true,
+                    width = 40
                 },
                 update_focused_file = {
                     enable = true,
