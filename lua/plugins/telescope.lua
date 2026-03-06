@@ -25,6 +25,14 @@ return {
                         "%.lock",
                     },
                 },
+                pickers = {
+                    find_files = {
+                        no_ignore = true,
+                    },
+                    live_grep = {
+                        no_ignore = true,
+                    },
+                },
                 extensions = {
                     fzf = {
                         fuzzy = true,
