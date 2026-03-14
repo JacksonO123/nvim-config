@@ -14,7 +14,7 @@ return {
             telescope.setup({
                 defaults = {
                     preview = {
-                        filesize_limit = 1
+                        filesize_limit = 1,
                     },
                     file_ignore_patterns = {
                         "node_modules",
@@ -25,22 +25,14 @@ return {
                         "%.lock",
                     },
                 },
-                pickers = {
-                    find_files = {
-                        no_ignore = true,
-                    },
-                    live_grep = {
-                        no_ignore = true,
-                    },
-                },
                 extensions = {
                     fzf = {
                         fuzzy = true,
                         override_generic_sorter = true,
                         override_file_sorter = true,
                         case_mode = "smart_case",
-                    }
-                }
+                    },
+                },
             })
 
             telescope.load_extension("fzf")
@@ -53,6 +45,6 @@ return {
             vim.api.nvim_set_hl(0, "TelescopeResultsBorder", { bg = "none" })
             vim.api.nvim_set_hl(0, "TelescopePreviewNormal", { bg = "none" })
             vim.api.nvim_set_hl(0, "TelescopePreviewBorder", { bg = "none" })
-        end
-    }
+        end,
+    },
 }
