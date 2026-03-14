@@ -118,4 +118,6 @@ vim.keymap.set({ "n", "v" }, "<leader>gs", ":NvimTreeClose<CR>:topleft vert G<CR
 
 vim.keymap.set("t", "<C-Esc>", [[<C-\><C-n>]], opts)
 
-vim.keymap.set("v", "<leader>y", "\"+y", opts)
+vim.keymap.set("v", "<leader>y", '"+y', opts)
+
+vim.keymap.set("n", "<leader>bd", ":bd!", opts)
