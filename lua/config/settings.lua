@@ -12,6 +12,7 @@ M.format_on_save = true
 M.tab_width = 4
 
 M.transparent = true
+M.transparentLuaLine = false
 M.colorscheme = "kanagawa-paper"
 
 M.formatter_ft = {
