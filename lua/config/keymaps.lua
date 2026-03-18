@@ -121,3 +121,6 @@ vim.keymap.set("t", "<C-Esc>", [[<C-\><C-n>]], opts)
 vim.keymap.set("v", "<leader>y", '"+y', opts)
 
 vim.keymap.set("n", "<leader>bd", ":bd!", opts)
+
+vim.keymap.set({ "n", "i", "v" }, "<ScrollWheelUp>", "<C-Y>", opts)
+vim.keymap.set({ "n", "i", "v" }, "<ScrollWheelDown>", "<C-E>", opts)
