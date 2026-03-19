@@ -120,5 +120,5 @@ vim.keymap.set("v", "<leader>y", '"+y', opts)
 
 vim.keymap.set("n", "<leader>bd", ":bd!<CR>", opts)
 
-vim.keymap.set({ "n", "i", "v" }, "<ScrollWheelUp><CR>", "<C-Y>", opts)
-vim.keymap.set({ "n", "i", "v" }, "<ScrollWheelDown><CR>", "<C-E>", opts)
+vim.keymap.set({ "n", "i", "v" }, "<ScrollWheelUp>", "<C-Y>", opts)
+vim.keymap.set({ "n", "i", "v" }, "<ScrollWheelDown>", "<C-E>", opts)
