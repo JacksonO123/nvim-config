@@ -1,5 +1,5 @@
 return {
-    { "JoosepAlviste/nvim-ts-context-commentstring", },
+    { "JoosepAlviste/nvim-ts-context-commentstring", lazy = true },
     {
         "nvim-treesitter/playground",
         lazy = true,
@@ -8,7 +8,7 @@ return {
         "nvim-treesitter/nvim-treesitter",
         branch = "main",
         build = ":TSUpdate",
-        lazy = false,
+        event = { "BufReadPost", "BufNewFile" },
         config = function()
             local ts = require("nvim-treesitter")
 

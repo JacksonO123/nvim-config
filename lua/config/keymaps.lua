@@ -17,9 +17,6 @@ local mode_adapters = {
 }
 
 local settings = require("config.settings")
-local conform = require("conform")
-local harpoon = require("harpoon")
-local telescope_builtin = require("telescope.builtin")
 
 local keymaps = {
     insert_mode = {
@@ -41,7 +38,7 @@ local keymaps = {
         ["<leader>lk"] = vim.diagnostic.goto_prev,
         ["<leader>ld"] = vim.diagnostic.open_float,
         ["<leader>lf"] = function()
-            conform.format(settings.formatter_ft)
+            require("conform").format(settings.formatter_ft)
         end,
 
         ["<C-h>"] = "<C-w>h",
@@ -59,32 +56,33 @@ local keymaps = {
             vim.cmd.norm("grr")
         end,
 
-        ["<leader>f"] = telescope_builtin.find_files,
-        ["<leader>s"] = telescope_builtin.live_grep,
+        ["<leader>f"] = function() require("snacks").picker.files() end,
+        ["<leader>s"] = function() require("snacks").picker.grep() end,
         ["<leader>tm"] = ":terminal<CR>",
 
         ["<C-v>"] = "p",
 
         ["<leader>a"] = function()
-            harpoon:list():add()
+            require("harpoon"):list():add()
         end,
         ["<leader>m"] = function()
+            local harpoon = require("harpoon")
             harpoon.ui:toggle_quick_menu(harpoon:list())
         end,
         ["<C-1>"] = function()
-            harpoon:list():select(1)
+            require("harpoon"):list():select(1)
         end,
         ["<C-2>"] = function()
-            harpoon:list():select(2)
+            require("harpoon"):list():select(2)
         end,
         ["<C-3>"] = function()
-            harpoon:list():select(3)
+            require("harpoon"):list():select(3)
         end,
         ["<C-4>"] = function()
-            harpoon:list():select(4)
+            require("harpoon"):list():select(4)
         end,
         ["<C-5>"] = function()
-            harpoon:list():select(5)
+            require("harpoon"):list():select(5)
         end,
     },
 
@@ -120,7 +118,7 @@ vim.keymap.set("t", "<C-Esc>", [[<C-\><C-n>]], opts)
 
 vim.keymap.set("v", "<leader>y", '"+y', opts)
 
-vim.keymap.set("n", "<leader>bd", ":bd!", opts)
+vim.keymap.set("n", "<leader>bd", ":bd!<CR>", opts)
 
-vim.keymap.set({ "n", "i", "v" }, "<ScrollWheelUp>", "<C-Y>", opts)
-vim.keymap.set({ "n", "i", "v" }, "<ScrollWheelDown>", "<C-E>", opts)
+vim.keymap.set({ "n", "i", "v" }, "<ScrollWheelUp><CR>", "<C-Y>", opts)
+vim.keymap.set({ "n", "i", "v" }, "<ScrollWheelDown><CR>", "<C-E>", opts)
