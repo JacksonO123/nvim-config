@@ -40,7 +40,7 @@ M.format_ops = {
 
 M.lsp_clients = {
     "lua_ls",
-    "ts_ls",
+    "vtsls",
     "clangd",
     "zls",
     "rust_analyzer",
