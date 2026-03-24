@@ -6,6 +6,15 @@ opt.tabstop = settings.tab_width
 opt.expandtab = true
 opt.softtabstop = settings.tab_width
 
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+	callback = function()
+		vim.bo.shiftwidth = 2
+		vim.bo.tabstop = 2
+		vim.bo.softtabstop = 2
+	end,
+})
+
 opt.scrolloff = 3
 opt.sidescroll = 3
 
