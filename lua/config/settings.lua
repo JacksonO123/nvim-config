@@ -50,6 +50,7 @@ M.lsp_clients = {
     "pyright",
     "cssls",
     "jdtls",
+    "eslint"
 }
 
 return M
