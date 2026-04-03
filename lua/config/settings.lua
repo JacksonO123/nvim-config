@@ -52,4 +52,6 @@ M.lsp_clients = {
     "jdtls",
 }
 
+M.override_scroll_events = false
+
 return M

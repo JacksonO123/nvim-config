@@ -56,8 +56,12 @@ local keymaps = {
             vim.cmd.norm("grr")
         end,
 
-        ["<leader>f"] = function() require("snacks").picker.files() end,
-        ["<leader>s"] = function() require("snacks").picker.grep() end,
+        ["<leader>f"] = function()
+            require("snacks").picker.files()
+        end,
+        ["<leader>s"] = function()
+            require("snacks").picker.grep()
+        end,
         ["<leader>tm"] = ":terminal<CR>",
 
         ["<C-v>"] = "p",
@@ -120,5 +124,7 @@ vim.keymap.set("v", "<leader>y", '"+y', opts)
 
 vim.keymap.set("n", "<leader>bd", ":bd!<CR>", opts)
 
-vim.keymap.set({ "n", "i", "v" }, "<ScrollWheelUp>", "<C-Y>", opts)
-vim.keymap.set({ "n", "i", "v" }, "<ScrollWheelDown>", "<C-E>", opts)
+if settings.override_scroll_events then
+    vim.keymap.set({ "n", "i", "v" }, "<ScrollWheelUp>", "<C-Y>", opts)
+    vim.keymap.set({ "n", "i", "v" }, "<ScrollWheelDown>", "<C-E>", opts)
+end
