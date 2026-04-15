@@ -18,7 +18,7 @@ return {
                 install_dir = vim.fn.stdpath("data") .. "/site",
             })
 
-            ts.install {
+            ts.install({
                 "javascript",
                 "typescript",
                 "tsx",
@@ -34,21 +34,21 @@ return {
                 "rust",
                 "sql",
                 "zig",
-                "lua"
-            }
+                "lua",
+            })
 
             local context_commentstring = require("ts_context_commentstring")
             context_commentstring.setup()
 
             vim.api.nvim_create_autocmd("FileType", {
                 callback = function(args)
-                    local lang = vim.treesitter.language.get_lang(vim.bo[args.buf].filetype) or vim.bo[args.buf]
-                        .filetype
+                    local lang = vim.treesitter.language.get_lang(vim.bo[args.buf].filetype)
+                        or vim.bo[args.buf].filetype
                     if lang then
                         pcall(vim.treesitter.start, args.buf, lang)
                     end
-                end
+                end,
             })
-        end
+        end,
     },
 }
