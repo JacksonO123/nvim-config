@@ -1,17 +1,16 @@
-local setColorScheme = function(name)
-    vim.cmd.colorscheme(name)
-end
-
 local colorschemes = require("config.colorschemes").colorschemes
 local settings = require("config.settings")
 local active = settings.colorscheme
 local res = {}
+
+local found = false
 
 for i = 1, table.getn(colorschemes) do
     local item = colorschemes[i]
     local priority = 0
 
     if item.name == active then
+        found = true
         priority = 1000
     end
 
@@ -27,9 +26,13 @@ for i = 1, table.getn(colorschemes) do
 
             item.config()
             vim.opt.termguicolors = true
-            setColorScheme(item.name)
-        end
+            vim.cmd.colorscheme(item.name)
+        end,
     }
+end
+
+if not found then
+    vim.cmd.colorscheme(active)
 end
 
 return res
