@@ -52,9 +52,9 @@ M.mason_lsp_clients = {
 }
 
 M.bin_lsp_clients = {
-    "zls"
+    "zls",
 }
 
-M.override_scroll_events = true
+M.override_scroll_events = false
 
 return M
