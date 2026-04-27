@@ -38,11 +38,10 @@ M.format_ops = {
     timeout_ms = 500,
 }
 
-M.lsp_clients = {
+M.mason_lsp_clients = {
     "lua_ls",
     "ts_ls",
     "clangd",
-    "zls",
     "rust_analyzer",
     "jsonls",
     "bashls",
@@ -52,6 +51,10 @@ M.lsp_clients = {
     "jdtls",
 }
 
-M.override_scroll_events = false
+M.bin_lsp_clients = {
+    "zls"
+}
+
+M.override_scroll_events = true
 
 return M

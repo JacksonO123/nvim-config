@@ -21,25 +21,31 @@ return {
             },
         },
         config = function()
-            local clients = require("config.settings").lsp_clients
+            local settings = require("config.settings")
+            local mason_clients = settings.mason_lsp_clients
+            local bin_clients = settings.bin_lsp_clients
+
+            local all_clients = {}
+            vim.list_extend(all_clients, mason_clients)
+            vim.list_extend(all_clients, bin_clients)
 
             require("mason").setup()
             require("mason-lspconfig").setup({
-                automatic_installation = true,
-                ensure_installed = clients,
+                automatic_installation = { exclude = bin_clients },
+                ensure_installed = mason_clients,
             })
 
             vim.lsp.config("*", {})
             vim.lsp.config("null-ls", {})
 
-            for _, client in ipairs(clients) do
+            for _, client in ipairs(all_clients) do
                 local ok, config = pcall(require, "lsp." .. client)
                 if ok then
                     vim.lsp.config(client, config)
                 end
             end
 
-            vim.lsp.enable(clients)
+            vim.lsp.enable(all_clients)
         end,
     },
 }
