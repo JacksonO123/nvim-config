@@ -47,7 +47,15 @@ return {
         picker = {
             ignored = true,
             hidden = true,
-            exclude = { "**/.git", "**/.DS_Store", "**/node_modules", "**/.zig-cache", "**/.next", "**/.nx" },
+            exclude = {
+                "**/.git",
+                "**/.DS_Store",
+                "**/node_modules",
+                "**/.zig-cache",
+                "**/.next",
+                "**/.nx",
+                "**/dist"
+            },
             enabled = true,
             layout = {
                 preset = "telescope",

@@ -118,6 +118,10 @@ vim.keymap.set({ "n", "v" }, "<leader>gd", ":Gvdiffsplit<CR>", opts)
 vim.keymap.set({ "n", "v" }, "<leader>gb", ":Gitsigns blame<CR>", opts)
 vim.keymap.set({ "n", "v" }, "<leader>gs", ":NvimTreeClose<CR>:topleft vert G<CR>", opts)
 
+vim.keymap.set({ "n", "v" }, "<leader>gn", ":GitConflictNextConflict<CR>", opts)
+vim.keymap.set({ "n", "v" }, "<leader>gt", ":GitConflictChooseTheirs<CR>", opts)
+vim.keymap.set({ "n", "v" }, "<leader>go", ":GitConflictChooseOurs<CR>", opts)
+
 vim.keymap.set("t", "<C-Esc>", [[<C-\><C-n>]], opts)
 
 vim.keymap.set("v", "<leader>y", '"+y', opts)
