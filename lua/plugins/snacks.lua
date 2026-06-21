@@ -54,7 +54,8 @@ return {
                 "**/.zig-cache",
                 "**/.next",
                 "**/.nx",
-                "**/dist"
+                "**/dist",
+                "**/target",
             },
             enabled = true,
             layout = {
