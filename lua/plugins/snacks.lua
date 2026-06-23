@@ -57,6 +57,10 @@ return {
                 "**/dist",
                 "**/target",
             },
+            sources = {
+                files = { hidden = true, ignored = true },
+                grep = { hidden = true, ignored = true },
+            },
             enabled = true,
             layout = {
                 preset = "telescope",
