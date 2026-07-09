@@ -5,7 +5,7 @@ local res = {}
 
 local found = false
 
-for i = 1, table.getn(colorschemes) do
+for i = 1, #colorschemes do
     local item = colorschemes[i]
     local priority = 0
 

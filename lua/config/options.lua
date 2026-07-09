@@ -16,7 +16,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 opt.scrolloff = 3
-opt.sidescroll = 3
+opt.sidescrolloff = 4
 
 opt.relativenumber = true
 opt.number = true
@@ -39,5 +39,3 @@ opt.swapfile = false
 
 opt.winborder = "rounded"
 opt.splitright = true
-
-vim.o.winborder = "rounded"

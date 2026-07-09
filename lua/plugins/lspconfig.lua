@@ -6,8 +6,6 @@ return {
         dependencies = {
             "mason-org/mason.nvim",
             "mason-org/mason-lspconfig.nvim",
-            "mason-org/mason-registry",
-            "rshkarin/mason-nvim-lint",
             {
                 "folke/lazydev.nvim",
                 ft = "lua", -- only load on lua files
@@ -34,10 +32,12 @@ return {
                 ensure_installed = mason_clients,
             })
 
+            local capabilities = require("cmp_nvim_lsp").default_capabilities()
+            capabilities.textDocument.completion.completionItem.snippetSupport = false
+
             vim.lsp.config("*", {
-                capabilities = require("cmp_nvim_lsp").default_capabilities(),
+                capabilities = capabilities,
             })
-            vim.lsp.config("null-ls", {})
 
             for _, client in ipairs(all_clients) do
                 local ok, config = pcall(require, "lsp." .. client)

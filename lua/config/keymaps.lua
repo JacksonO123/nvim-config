@@ -19,10 +19,6 @@ local mode_adapters = {
 local settings = require("config.settings")
 
 local keymaps = {
-    insert_mode = {
-        ["<C-v>"] = "<esc>p",
-    },
-
     normal_mode = {
         ["<leader>e"] = ":NvimTreeToggle<CR>",
         ["<leader>q"] = "<C-w>q",
@@ -63,8 +59,6 @@ local keymaps = {
             require("snacks").picker.grep()
         end,
         ["<leader>tm"] = ":terminal<CR>",
-
-        ["<C-v>"] = "p",
 
         ["<leader>a"] = function()
             require("harpoon"):list():add()

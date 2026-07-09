@@ -1,10 +1,6 @@
 return {
     { "JoosepAlviste/nvim-ts-context-commentstring", lazy = true },
     {
-        "nvim-treesitter/playground",
-        lazy = true,
-    },
-    {
         "nvim-treesitter/nvim-treesitter",
         branch = "main",
         build = ":TSUpdate",
