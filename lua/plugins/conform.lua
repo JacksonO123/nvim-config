@@ -17,15 +17,6 @@ return {
                     }
                 end
             })
-
-            local format_augroup = vim.api.nvim_create_augroup("format", { clear = true })
-
-            vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-                group = format_augroup,
-                callback = function()
-                    conform.format(settings.format_ops)
-                end
-            })
         end
     end
 }
