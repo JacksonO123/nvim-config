@@ -88,6 +88,8 @@ local keymaps = {
         ["<C-5>"] = function()
             require("harpoon"):list():select(5)
         end,
+
+        ["<leader>cd"] = ":cd %:p:h<CR>",
     },
 
     visual_mode = {
