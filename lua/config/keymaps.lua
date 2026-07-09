@@ -38,7 +38,7 @@ local keymaps = {
         ["<leader>lk"] = vim.diagnostic.goto_prev,
         ["<leader>ld"] = vim.diagnostic.open_float,
         ["<leader>lf"] = function()
-            require("conform").format(settings.formatter_ft)
+            require("conform").format(settings.format_ops)
         end,
 
         ["<C-h>"] = "<C-w>h",

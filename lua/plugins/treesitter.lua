@@ -12,29 +12,8 @@ return {
         config = function()
             local ts = require("nvim-treesitter")
 
-            ts.auto_install = true
-
             ts.setup({
                 install_dir = vim.fn.stdpath("data") .. "/site",
-            })
-
-            ts.install({
-                "javascript",
-                "typescript",
-                "tsx",
-                "bash",
-                "c",
-                "css",
-                "go",
-                "html",
-                "make",
-                "json",
-                "python",
-                "regex",
-                "rust",
-                "sql",
-                "zig",
-                "lua",
             })
 
             local context_commentstring = require("ts_context_commentstring")

@@ -18,7 +18,7 @@ for i = 1, table.getn(colorschemes) do
         item[1],
         lazy = item.name ~= active,
         priority = priority,
-        enable = item.name == active,
+        enabled = item.name == active,
         config = function()
             if item.name ~= active then
                 return

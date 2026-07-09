@@ -31,11 +31,12 @@ return {
 
             require("mason").setup()
             require("mason-lspconfig").setup({
-                automatic_installation = { exclude = bin_clients },
                 ensure_installed = mason_clients,
             })
 
-            vim.lsp.config("*", {})
+            vim.lsp.config("*", {
+                capabilities = require("cmp_nvim_lsp").default_capabilities(),
+            })
             vim.lsp.config("null-ls", {})
 
             for _, client in ipairs(all_clients) do
