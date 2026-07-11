@@ -30,8 +30,12 @@ local keymaps = {
         ["<leader>h"] = "<C-w>v<C-w>l",
         ["<leader>j"] = "<C-w>s<C-w>j",
 
-        ["<leader>lj"] = vim.diagnostic.goto_next,
-        ["<leader>lk"] = vim.diagnostic.goto_prev,
+        ["<leader>lj"] = function()
+            vim.diagnostic.jump({ count = 1 })
+        end,
+        ["<leader>lk"] = function()
+            vim.diagnostic.jump({ count = -1 })
+        end,
         ["<leader>ld"] = vim.diagnostic.open_float,
         ["<leader>lf"] = function()
             require("conform").format(settings.format_ops)
