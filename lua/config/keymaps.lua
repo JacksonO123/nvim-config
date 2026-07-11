@@ -31,10 +31,10 @@ local keymaps = {
         ["<leader>j"] = "<C-w>s<C-w>j",
 
         ["<leader>lj"] = function()
-            vim.diagnostic.jump({ count = 1 })
+            vim.diagnostic.jump({ count = 1, float = true })
         end,
         ["<leader>lk"] = function()
-            vim.diagnostic.jump({ count = -1 })
+            vim.diagnostic.jump({ count = -1, float = true })
         end,
         ["<leader>ld"] = vim.diagnostic.open_float,
         ["<leader>lf"] = function()
