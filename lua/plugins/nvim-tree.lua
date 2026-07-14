@@ -42,7 +42,7 @@ return {
                 update_focused_file = {
                     enable = true,
                     update_root = {
-                        enable = true,
+                        enable = false,
                     },
                 },
                 sync_root_with_cwd = true,
