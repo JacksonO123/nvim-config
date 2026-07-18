@@ -54,6 +54,6 @@ M.bin_lsp_clients = {
     "zls",
 }
 
-M.override_scroll_events = false
+M.override_scroll_events = true
 
 return M

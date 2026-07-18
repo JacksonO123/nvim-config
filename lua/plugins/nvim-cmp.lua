@@ -7,9 +7,12 @@ return {
             "hrsh7th/cmp-buffer",
             "hrsh7th/cmp-path",
             "hrsh7th/cmp-cmdline",
+            "L3MON4D3/LuaSnip",
+            "saadparwaiz1/cmp_luasnip",
         },
         config = function()
             local cmp = require("cmp")
+            local luasnip = require("luasnip")
             local icons = require("defs.icons")
 
             local borderOps = {
@@ -18,6 +21,11 @@ return {
             }
 
             cmp.setup({
+                snippet = {
+                    expand = function(args)
+                        luasnip.lsp_expand(args.body)
+                    end,
+                },
                 window = {
                     completion = cmp.config.window.bordered(borderOps),
                     documentation = cmp.config.window.bordered(borderOps),
@@ -33,6 +41,8 @@ return {
                     ["<Tab>"] = cmp.mapping(function(fallback)
                         if cmp.visible() then
                             cmp.select_next_item()
+                        elseif luasnip.expand_or_locally_jumpable() then
+                            luasnip.expand_or_jump()
                         else
                             fallback()
                         end
@@ -40,6 +50,8 @@ return {
                     ["<S-Tab>"] = cmp.mapping(function(fallback)
                         if cmp.visible() then
                             cmp.select_prev_item()
+                        elseif luasnip.locally_jumpable(-1) then
+                            luasnip.jump(-1)
                         else
                             fallback()
                         end
@@ -47,6 +59,7 @@ return {
                 }),
                 sources = cmp.config.sources({
                     { name = "nvim_lsp" },
+                    { name = "luasnip" },
                     { name = "path" },
                 }, {
                     { name = "buffer" },
@@ -57,6 +70,7 @@ return {
                         vim_item.kind = icons.kind[vim_item.kind] or ""
                         vim_item.menu = ({
                             nvim_lsp = "(LSP)",
+                            luasnip = "(Snippet)",
                             buffer = "(Buffer)",
                             path = "(Path)",
                         })[entry.source.name]
