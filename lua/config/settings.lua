@@ -40,7 +40,6 @@ M.format_ops = {
 
 M.mason_lsp_clients = {
     "lua_ls",
-    "ts_ls",
     "clangd",
     "rust_analyzer",
     "jsonls",
