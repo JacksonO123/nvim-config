@@ -21,7 +21,7 @@ opt.sidescrolloff = 4
 opt.relativenumber = true
 opt.number = true
 opt.signcolumn = "yes"
-opt.colorcolumn = "100"
+opt.colorcolumn = "110"
 
 opt.updatetime = 400
 opt.timeoutlen = 450
