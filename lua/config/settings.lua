@@ -16,21 +16,28 @@ M.transparentLuaLine = false
 M.colorscheme = "kanagawa-paper"
 
 M.formatter_ft = {
-    javascript = { "prettier" },
-    typescript = { "prettier" },
-    javascriptreact = { "prettier" },
-    typescriptreact = { "prettier" },
-    json = { "prettier" },
-    css = { "prettier" },
-    scss = { "prettier" },
-    markdown = { "prettier" },
-    html = { "prettier" },
+    javascript = { "oxfmt" },
+    typescript = { "oxfmt" },
+    javascriptreact = { "oxfmt" },
+    typescriptreact = { "oxfmt" },
+    json = { "oxfmt" },
+    css = { "oxfmt" },
+    scss = { "oxfmt" },
+    markdown = { "oxfmt" },
+    html = { "oxfmt" },
 
     python = { "isort", "black" },
     bash = { "beautysh" },
     rust = { "rustfmt" },
     yaml = { "yamlfix" },
     toml = { "taplo" },
+}
+
+M.linters_by_ft = {
+    javascript = { "oxlint" },
+    typescript = { "oxlint" },
+    javascriptreact = { "oxlint" },
+    typescriptreact = { "oxlint" },
 }
 
 M.format_ops = {
@@ -54,6 +61,6 @@ M.bin_lsp_clients = {
     "zls",
 }
 
-M.override_scroll_events = true
+M.override_scroll_events = false
 
 return M
