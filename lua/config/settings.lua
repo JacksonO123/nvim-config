@@ -15,16 +15,17 @@ M.transparent = true
 M.transparentLuaLine = false
 M.colorscheme = "kanagawa-paper"
 
+local utils = require("utils.utils")
+
 M.formatter_ft = {
-    javascript = { "oxfmt" },
-    typescript = { "oxfmt" },
-    javascriptreact = { "oxfmt" },
-    typescriptreact = { "oxfmt" },
-    json = { "oxfmt" },
-    css = { "oxfmt" },
-    scss = { "oxfmt" },
-    markdown = { "oxfmt" },
-    html = { "oxfmt" },
+    javascript = utils.get_js_formatter,
+    typescript = utils.get_js_formatter,
+    javascriptreact = utils.get_js_formatter,
+    typescriptreact = utils.get_js_formatter,
+    json = utils.get_js_formatter,
+    css = utils.get_js_formatter,
+    markdown = utils.get_js_formatter,
+    html = utils.get_js_formatter,
 
     python = { "isort", "black" },
     bash = { "beautysh" },
