@@ -24,6 +24,7 @@ M.formatter_ft = {
     typescriptreact = utils.get_js_formatter,
     json = utils.get_js_formatter,
     css = utils.get_js_formatter,
+    scss = utils.get_js_formatter,
     markdown = utils.get_js_formatter,
     html = utils.get_js_formatter,
 
@@ -35,10 +36,10 @@ M.formatter_ft = {
 }
 
 M.linters_by_ft = {
-    javascript = { "oxlint" },
-    typescript = { "oxlint" },
-    javascriptreact = { "oxlint" },
-    typescriptreact = { "oxlint" },
+    javascript = utils.get_js_linter,
+    typescript = utils.get_js_linter,
+    javascriptreact = utils.get_js_linter,
+    typescriptreact = utils.get_js_linter,
 }
 
 M.format_ops = {
