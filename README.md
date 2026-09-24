@@ -39,6 +39,10 @@ Both `mason_lsp_clients` and `bin_lsp_clients` can be have their individual lsp 
 
 `bin_lsp_clients` exists to make sourcing lsp servers from local bin files easy. To get started, list the lsp name, then add the `lua/lsp/<server name>.lua` and specify the cmd to point to the local bin file.
 
+#### Non-lsp mason tools
+
+Non-lsm mason clients listed in `mason_tools` are installed from the registry.
+
 #### Scroll events
 
 For slower scrolling, enable `override_scroll_events`. Each scroll event will translate to a one line scroll up or down key bind.
