@@ -59,6 +59,10 @@ M.mason_lsp_clients = {
     "jdtls",
 }
 
+M.mason_tools = {
+    "cspell",
+}
+
 M.bin_lsp_clients = {
     "zls",
 }

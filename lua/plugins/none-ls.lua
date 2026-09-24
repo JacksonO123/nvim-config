@@ -6,6 +6,7 @@ return {
     {
         "nvimtools/none-ls.nvim",
         event = { "BufReadPost", "BufNewFile" },
+        dependencies = { "mason-org/mason.nvim" },
         config = function()
             local null_ls = require("null-ls")
             local cspell = require("cspell")

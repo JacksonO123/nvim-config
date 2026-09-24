@@ -27,7 +27,6 @@ return {
             vim.list_extend(all_clients, mason_clients)
             vim.list_extend(all_clients, bin_clients)
 
-            require("mason").setup()
             require("mason-lspconfig").setup({
                 ensure_installed = mason_clients,
             })
