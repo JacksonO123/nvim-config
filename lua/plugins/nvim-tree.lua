@@ -37,7 +37,7 @@ return {
                 },
                 view = {
                     preserve_window_proportions = true,
-                    width = 40
+                    width = 40,
                 },
                 update_focused_file = {
                     enable = true,
@@ -64,8 +64,11 @@ return {
                         "zig-out",
                         ".next",
                     },
-                }
+                },
+                live_filter = {
+                    always_show_folders = false,
+                },
             })
-        end
-    }
+        end,
+    },
 }
