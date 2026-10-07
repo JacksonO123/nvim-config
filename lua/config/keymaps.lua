@@ -88,6 +88,10 @@ local keymaps = {
         end,
 
         ["<leader>cd"] = ":cd %:p:h<CR>",
+
+        ["<leader>o"] = function()
+            require("oil").open()
+        end
     },
 
     visual_mode = {

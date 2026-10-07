@@ -6,10 +6,8 @@ return {
     config = function()
         require('distant'):setup()
 
-        -- distant nvim bug chipsenkbeil/distant.nvim#125 globally disables diagnostic underlines.
-        -- so, re-enable them
         vim.schedule(function()
-            vim.diagnostic.config({ underline = true, signs = true })
+            vim.diagnostic.config({ underline = true, signs = true, virtual_text = false })
         end)
     end
 }
