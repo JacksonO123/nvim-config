@@ -46,6 +46,15 @@ return {
             end
 
             vim.lsp.enable(all_clients)
+
+            vim.api.nvim_create_autocmd("BufEnter", {
+                group = vim.api.nvim_create_augroup("lsp_refresh_diagnostics", { clear = true }),
+                callback = function(args)
+                    if vim.lsp.diagnostic._refresh then
+                        vim.lsp.diagnostic._refresh(args.buf)
+                    end
+                end,
+            })
         end,
     },
 }
