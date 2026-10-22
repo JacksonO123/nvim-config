@@ -57,6 +57,7 @@ M.mason_lsp_clients = {
     "pyright",
     "cssls",
     "jdtls",
+    "qmlls",
 }
 
 M.mason_tools = {
