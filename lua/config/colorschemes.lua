@@ -119,6 +119,39 @@ M.colorschemes = {
             })
         end,
     },
+
+    {
+        -- https://github.com/killitar/obscure.nvim
+        "folke/tokyonight.nvim",
+        name = "tokyonight",
+        config = function()
+            require("tokyonight").setup({
+                transparent = settings.transparent,
+            })
+        end,
+    },
+
+    {
+        -- https://github.com/folke/tokyonight.nvim
+        "folke/tokyonight.nvim",
+        name = "tokyonight",
+        config = function()
+            require("tokyonight").setup({
+                transparent = settings.transparent,
+            })
+        end,
+    },
+
+    {
+        -- https://github.com/folke/tokyonight.nvim
+        "ellisonleao/gruvbox.nvim",
+        name = "gruvbox",
+        config = function()
+            require("gruvbox").setup({
+                transparent_mode = settings.transparent,
+            })
+        end,
+    },
 }
 
 return M

@@ -13,7 +13,7 @@ M.tab_width = 4
 
 M.transparent = true
 M.transparentLuaLine = false
-M.colorscheme = "kanagawa-paper"
+M.colorscheme = "gruvbox"
 
 local utils = require("utils.utils")
 
