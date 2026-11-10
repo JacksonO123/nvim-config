@@ -74,6 +74,10 @@ function M.get_js_formatter(bufnr)
         return { "oxfmt" }
     end
 
+    if vim.uv.fs_stat(vim.fs.joinpath(vim.env.HOME, ".oxfmtrc.json")) then
+        return { "oxfmt" }
+    end
+
     return { lsp_format = "never" }
 end
 
