@@ -4,7 +4,7 @@ local settings = require("config.settings")
 
 M.colorschemes = {
     {
-        "thesimonho/kanagawa-paper.nvim",
+        "thesimonho/kanagawa-paper",
         name = "kanagawa-paper",
         config = function()
             require("kanagawa-paper").setup({
